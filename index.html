@@ -98,6 +98,23 @@ section{padding:44px 0}
 footer{text-align:center;padding:30px 18px 40px;color:var(--ink-soft);font-size:.8rem}
 .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:linear-gradient(135deg,#DCEAE9,#9FC4C7);color:#245158}
 .camp-thumb.ph{font-size:1.4rem;position:absolute;bottom:-20px;inset-inline-end:14px;width:64px;height:64px;border-radius:12px;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+
+/* ===== قسم مواصفات الكرفان ===== */
+.van{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+@media(max-width:760px){.van{grid-template-columns:1fr}}
+.van-gallery{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 20px rgba(18,36,43,.06)}
+.van-main{position:relative;height:320px;background:#0E1E24}
+.van-main img{width:100%;height:100%;object-fit:cover;display:block}
+.van-thumbs{display:flex;gap:8px;padding:10px;overflow-x:auto}
+.van-thumbs img{width:88px;height:62px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;flex:0 0 auto;transition:border-color .18s}
+.van-thumbs img.active,.van-thumbs img:hover{border-color:var(--birch)}
+.van-specs{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 14px;box-shadow:0 6px 20px rgba(18,36,43,.06)}
+.van-specs h3{font-size:1.15rem;color:var(--fjord);margin-bottom:4px}
+.van-specs .model-tag{font-size:.78rem;color:#8A6215;background:var(--birch-soft);display:inline-block;border-radius:7px;padding:1px 10px;font-weight:600;margin-bottom:12px}
+.spec-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+.spec-row:last-of-type{border-bottom:none}
+.spec-row .k{color:var(--ink-soft)}
+.spec-row .v{font-weight:600;color:var(--fjord);text-align:left}
 </style>
 </head>
 <body>
@@ -147,6 +164,38 @@ footer{text-align:center;padding:30px 18px 40px;color:var(--ink-soft);font-size:
     </g>
   </svg>
 </header>
+
+<section id="caravan">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>🚐 الكرفان — المواصفات</h2>
+      <p>الكرفان المعتمد لهذه الرحلة: كرفان «شبه مدمج» (Semi-Integrated) مريح يتّسع للعائلة. اضغط الصور المصغّرة لتصفّح الكرفان من الخارج والداخل.</p>
+    </div>
+    <div class="van">
+      <div class="van-gallery">
+        <div class="van-main"><img id="vanMain" src="https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_CU_2025_1502_21-31-41_WEB.jpg/w=2560" alt="الكرفان — صورة خارجية"></div>
+        <div class="van-thumbs" id="vanThumbs"></div>
+      </div>
+      <div class="van-specs">
+        <h3>Carado — كرفان شبه مدمج</h3>
+        <span class="model-tag">فئة TouringCars · طرازات T447 / T448</span>
+        <div class="spec-row"><span class="k">أماكن النوم</span><span class="v">حتى 4 أشخاص</span></div>
+        <div class="spec-row"><span class="k">مقاعد بأحزمة أمان</span><span class="v">4 مقاعد</span></div>
+        <div class="spec-row"><span class="k">الطول التقريبي</span><span class="v">≈ 6.99 م</span></div>
+        <div class="spec-row"><span class="k">العرض / الارتفاع</span><span class="v">≈ 2.32 م / ≈ 2.9 م</span></div>
+        <div class="spec-row"><span class="k">الوزن الإجمالي</span><span class="v">حتى 3,500 كجم</span></div>
+        <div class="spec-row"><span class="k">المحرك وناقل الحركة</span><span class="v">Fiat Ducato 2.2 ديزل · أوتوماتيك</span></div>
+        <div class="spec-row"><span class="k">المياه العذبة / الصرف</span><span class="v">≈ 120 ل / ≈ 90 ل</span></div>
+        <div class="spec-row"><span class="k">التدفئة والطاقة</span><span class="v">Truma (غاز/كهرباء) · 220 فولت</span></div>
+        <div class="facilities" style="margin-top:12px">
+          <span class="fac">مطبخ</span><span class="fac">ثلاجة</span><span class="fac">دورة مياه ودُش</span>
+          <span class="fac">تدفئة</span><span class="fac">طاولة طعام</span><span class="fac">خزائن تخزين</span>
+        </div>
+        <div class="note-inline" style="margin-top:12px">⚠️ الأرقام تقديرية لطراز Carado شبه المدمج — يُرجى تأكيد المواصفات الدقيقة من عقد الإيجار (TouringCars). ملاحظة: الطول ≈ 7م ضمن حد ترولستيغن (13.1م).</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -358,6 +407,31 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowLeft")nav(1);
   if(e.key==="ArrowRight")nav(-1);
 });
+
+/* ===== معرض صور الكرفان ===== */
+const VAN_IMGS=[
+"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_CU_2025_1502_21-31-41_WEB.jpg/w=2560",
+"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T448_GP_2025_0001_21-31-41_WEB-1.jpg/w=2500,h=1250",
+"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T338_PI_2024_0105_21-31-41_WEB.jpg/w=2560,h=1810",
+"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_IT_2024_0020_20-31-41_WEB.jpg/w=2560,h=1708",
+"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_CU_2025_1504_21-31-41_WEB.jpg/w=2560,h=1707"
+];
+(function(){
+  const main=document.getElementById("vanMain");
+  const thumbs=document.getElementById("vanThumbs");
+  if(!main||!thumbs)return;
+  VAN_IMGS.forEach((u,i)=>{
+    const t=document.createElement("img");
+    t.src=u;t.alt="صورة الكرفان "+(i+1);t.loading="lazy";
+    if(i===0)t.classList.add("active");
+    t.addEventListener("click",()=>{
+      main.src=u;
+      [...thumbs.children].forEach(c=>c.classList&&c.classList.remove("active"));
+      t.classList.add("active");
+    });
+    thumbs.appendChild(t);
+  });
+})();
 </script>
 </body>
 </html>
