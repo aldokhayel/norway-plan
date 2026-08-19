@@ -3,435 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رحلة الكرفان التفاعلية: ستوكهولم – فيوردات النرويج</title>
+<meta name="description" content="خطة رحلة كرفان من ستوكهولم إلى أوسلو وفوس وسترين، مع خريطة تفاعلية ومخيمات ومسارات خرائط Google.">
+<title>رحلة الكرفان الجديدة: ستوكهولم، فوس، وسترين</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://unpkg.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynhHDfjrz0XjMZufxyfxwVZOkEAs=" crossorigin="">
 <style>
 :root{
-  --fjord:#12242B; --water:#2E6E73; --water-soft:#DCEAE9;
-  --birch:#D9A441; --birch-soft:#F6ECD6; --pine:#3E5943;
-  --glacier:#EDF2F1; --card:#fff; --ink:#1C2B30; --ink-soft:#5A6E72;
-  --line:#C9D8D6; --radius:16px;
+  --night:#11272f;--fjord:#245b64;--water:#2f7c82;--ice:#edf4f3;
+  --gold:#d5a13c;--gold-soft:#fbf0d8;--pine:#3b5a45;--ink:#172d34;
+  --muted:#60767a;--line:#cbdcda;--white:#fff;--pass:#6d7f85;
+  --visit:#bc6c34;--sleep:#26705e;--radius:18px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'IBM Plex Sans Arabic',-apple-system,'Segoe UI',Tahoma,sans-serif;background:var(--glacier);color:var(--ink);line-height:1.8}
-h1,h2,h3{font-family:'Amiri','IBM Plex Sans Arabic',serif}
-.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
-
-/* ===== الترويسة مع مشهد الكرفان ===== */
-header{background:linear-gradient(175deg,#0E1E24 0%,#16333B 55%,#245158 100%);color:#EAF3F2;padding:44px 0 0;overflow:hidden}
-.eyebrow{display:inline-block;background:rgba(217,164,65,.16);color:var(--birch);border:1px solid rgba(217,164,65,.45);border-radius:99px;padding:4px 16px;font-size:.85rem;font-weight:600;margin-bottom:16px}
-header h1{font-size:clamp(1.8rem,5vw,2.9rem);line-height:1.4;margin-bottom:8px}
-header .sub{color:#B9CFCC;max-width:620px;font-size:1rem}
-.stats{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 8px}
-.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px 18px;min-width:110px}
-.stat b{display:block;font-size:1.4rem;color:var(--birch);font-family:'Amiri',serif}
-.stat span{font-size:.8rem;color:#B9CFCC}
-.hero-scene{display:block;width:100%;margin-top:10px}
-
-/* ===== الأقسام ===== */
-section{padding:44px 0}
-.section-head{margin-bottom:22px}
-.section-head h2{font-size:1.75rem;color:var(--fjord)}
-.section-head p{color:var(--ink-soft);max-width:660px;font-size:.95rem}
-
-/* ===== شبكة الأيام ===== */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:0 6px 20px rgba(18,36,43,.06);transition:transform .22s ease,box-shadow .22s ease;text-align:right}
-.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 16px 36px rgba(18,36,43,.13);outline:none}
-.card:focus-visible{box-shadow:0 0 0 3px var(--birch),0 16px 36px rgba(18,36,43,.13)}
-.cover{position:relative;height:180px;background:#D6E3E1}
-.cover img{width:100%;height:100%;object-fit:cover;display:block}
-.cover .dnum{position:absolute;top:12px;inset-inline-start:12px;background:var(--fjord);color:#fff;border-radius:10px;padding:2px 12px;font-size:.8rem;font-weight:700}
-.cover .dnum.ret{background:#8A6215}
-.cover .camp-thumb{position:absolute;bottom:-20px;inset-inline-end:14px;width:64px;height:64px;border-radius:12px;border:3px solid #fff;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-.card-body{padding:26px 16px 16px}
-.card-body .date{font-size:.78rem;color:#8A6215;background:var(--birch-soft);display:inline-block;border-radius:7px;padding:1px 10px;font-weight:600;margin-bottom:6px}
-.card-body h3{font-size:1.12rem;color:var(--fjord);line-height:1.5}
-.card-body .meta{font-size:.8rem;color:var(--ink-soft);margin-top:4px}
-.card-body .more{margin-top:10px;font-size:.82rem;color:var(--water);font-weight:700}
-
-/* ===== النافذة المنبثقة ===== */
-.overlay{position:fixed;inset:0;background:rgba(10,22,27,.72);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;z-index:50;padding:24px 12px;overflow-y:auto}
-.overlay.open{display:flex}
-.modal{background:#fff;border-radius:20px;max-width:680px;width:100%;overflow:hidden;animation:pop .25s ease;margin:auto 0}
-@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
-@media (prefers-reduced-motion:reduce){.modal{animation:none}.card{transition:none}}
-.carousel{position:relative;height:300px;background:#0E1E24}
-.carousel img{width:100%;height:100%;object-fit:cover;display:block}
-.carousel .cap{position:absolute;bottom:0;inset-inline:0;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;padding:26px 16px 10px;font-size:.85rem}
-.cbtn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);border:none;width:38px;height:38px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--fjord);font-weight:700}
-.cbtn.prev{inset-inline-start:10px}.cbtn.next{inset-inline-end:10px}
-.close-x{position:absolute;top:12px;inset-inline-end:12px;background:rgba(0,0,0,.5);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2}
-.modal-body{padding:20px 22px 24px}
-.modal-body .date{font-size:.8rem;color:#8A6215;background:var(--birch-soft);display:inline-block;border-radius:7px;padding:1px 10px;font-weight:600}
-.modal-body h3{font-size:1.5rem;color:var(--fjord);margin:6px 0 2px}
-.modal-body .meta{color:var(--ink-soft);font-size:.85rem;margin-bottom:10px}
-.modal-body .desc{font-size:.95rem;margin-bottom:16px}
-.mb-sec{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#FBFDFC}
-.mb-sec h4{font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--pine);display:flex;align-items:center;gap:6px}
-.stars{color:#E5A50A;letter-spacing:1px;font-size:.95rem}
-.rate-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.88rem}
-.rate-row:last-child{border-bottom:none}
-.rate-row .rr-name{font-weight:600}
-.rate-row .rr-meta{display:flex;align-items:center;gap:10px}
-.rate-row .cnt{color:var(--ink-soft);font-size:.78rem}
-.rate-row a{color:var(--water);font-size:.78rem;font-weight:700;text-decoration:none}
-.rate-row a:hover{text-decoration:underline}
-.facilities{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.fac{background:var(--water-soft);color:#215156;border-radius:99px;padding:2px 12px;font-size:.76rem;font-weight:500}
-.contact-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.contact-btns a{border-radius:10px;padding:8px 16px;font-size:.83rem;font-weight:700;text-decoration:none}
-.btn-solid{background:var(--water);color:#fff}
-.btn-line{border:1.5px solid var(--water);color:var(--water)}
-.note-inline{margin-top:10px;background:var(--birch-soft);border-radius:8px;padding:8px 14px;font-size:.82rem;color:#7A5A16}
-
-/* ===== نصائح ===== */
-.tips{background:var(--fjord);color:#D9E7E5;border-radius:20px;padding:34px 28px}
-.tips h2{color:#fff;font-size:1.6rem;margin-bottom:4px}
-.tips>p{color:#9DB8B5;margin-bottom:20px;font-size:.92rem}
-.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.tip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 16px}
-.tip h4{color:var(--birch);font-size:.92rem;margin-bottom:4px}
-.tip p{font-size:.84rem;line-height:1.75}
-footer{text-align:center;padding:30px 18px 40px;color:var(--ink-soft);font-size:.8rem}
-.ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:linear-gradient(135deg,#DCEAE9,#9FC4C7);color:#245158}
-.camp-thumb.ph{font-size:1.4rem;position:absolute;bottom:-20px;inset-inline-end:14px;width:64px;height:64px;border-radius:12px;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-
-/* ===== قسم مواصفات الكرفان ===== */
-.van{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
-@media(max-width:760px){.van{grid-template-columns:1fr}}
-.van-gallery{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 20px rgba(18,36,43,.06)}
-.van-main{position:relative;height:320px;background:#0E1E24}
-.van-main img{width:100%;height:100%;object-fit:cover;display:block}
-.van-thumbs{display:flex;gap:8px;padding:10px;overflow-x:auto}
-.van-thumbs img{width:88px;height:62px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;flex:0 0 auto;transition:border-color .18s}
-.van-thumbs img.active,.van-thumbs img:hover{border-color:var(--birch)}
-.van-specs{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 14px;box-shadow:0 6px 20px rgba(18,36,43,.06)}
-.van-specs h3{font-size:1.15rem;color:var(--fjord);margin-bottom:4px}
-.van-specs .model-tag{font-size:.78rem;color:#8A6215;background:var(--birch-soft);display:inline-block;border-radius:7px;padding:1px 10px;font-weight:600;margin-bottom:12px}
-.spec-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
-.spec-row:last-of-type{border-bottom:none}
-.spec-row .k{color:var(--ink-soft)}
-.spec-row .v{font-weight:600;color:var(--fjord);text-align:left}
+body{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;background:var(--ice);color:var(--ink);line-height:1.75}
+a{color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin-inline:auto}
+h1,h2,h3{font-family:'Amiri','IBM Plex Sans Arabic',serif;line-height:1.35}
+.hero{position:relative;overflow:hidden;background:linear-gradient(145deg,#0c2028 0%,#17414a 58%,#2f7278 100%);color:#fff;padding:48px 0 56px}
+.hero::before{content:"";position:absolute;inset:auto -10% -120px;width:120%;height:260px;background:rgba(255,255,255,.05);transform:rotate(-5deg);border-radius:50%}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:end}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(213,161,60,.55);background:rgba(213,161,60,.13);color:#f1ca7a;border-radius:99px;padding:5px 15px;font-size:.86rem;font-weight:700;margin-bottom:15px}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}.hero p{color:#c6d9d7;max-width:700px;font-size:1.02rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:11px;padding:10px 16px;text-decoration:none;font-weight:700;font-size:.9rem;transition:.2s}
+.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--gold);color:#1d2829}.btn-ghost{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px}.stat b{display:block;color:#f1ca7a;font-size:1.5rem}.stat span{color:#c6d9d7;font-size:.82rem}
+section{padding:48px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:20px}.section-head h2{font-size:clamp(1.65rem,4vw,2.25rem);color:var(--night)}.section-head p{color:var(--muted);max-width:670px;font-size:.94rem}
+.notice{background:var(--gold-soft);border:1px solid #ead19a;border-radius:14px;padding:13px 16px;color:#715716;font-size:.9rem;margin-bottom:18px}
+.map-shell{background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 14px 34px rgba(17,39,47,.1)}
+#map{height:540px;direction:ltr}.map-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 17px;border-top:1px solid var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.82rem}.legend span{display:flex;align-items:center;gap:6px}.dot{width:11px;height:11px;border-radius:50%;display:inline-block}.dot.sleep{background:var(--sleep)}.dot.pass{background:var(--pass)}.dot.visit{background:var(--visit)}
+.map-links{display:flex;flex-wrap:wrap;gap:8px}.map-link{background:var(--fjord);color:#fff;border-radius:9px;padding:7px 12px;text-decoration:none;font-size:.8rem;font-weight:700}
+.map-link.alt{background:var(--pine)}
+.bases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.base{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;overflow:hidden}.base::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--sleep)}.base small{color:var(--visit);font-weight:700}.base h3{font-size:1.25rem;margin:3px 0}.base p{font-size:.86rem;color:var(--muted)}
+.days{display:grid;gap:15px}.day{display:grid;grid-template-columns:86px 1fr auto;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 18px rgba(17,39,47,.05)}
+.day-date{background:var(--night);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px 8px;text-align:center}.day-date b{font-size:1.6rem;color:#f1ca7a}.day-date span{font-size:.72rem;color:#c6d9d7}
+.day-body{padding:17px 20px}.day-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px}.day h3{font-size:1.25rem}.badge{border-radius:99px;padding:2px 9px;font-size:.7rem;font-weight:700}.badge.sleep{background:#dcefe9;color:#1d6553}.badge.base{background:var(--gold-soft);color:#765817}.badge.drive{background:#e6eef0;color:#425f68}
+.day-desc{color:var(--muted);font-size:.88rem;margin-top:4px}.stop-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.stop{border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:.75rem;background:#f9fbfb}.stop strong{color:var(--visit)}
+.camp{margin-top:10px;background:#f2f8f6;border-radius:10px;padding:8px 11px;font-size:.82rem}.camp b{color:var(--sleep)}.camp a{color:var(--water);font-weight:700;text-decoration:none;margin-inline-start:7px}
+.day-map{min-width:130px;display:flex;align-items:center;justify-content:center;padding:14px;border-inline-start:1px dashed var(--line)}.day-map a{background:var(--water);color:#fff;text-decoration:none;border-radius:10px;padding:9px 12px;font-size:.8rem;font-weight:700;text-align:center}
+.road-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.road{background:var(--night);color:#d6e4e2;border-radius:15px;padding:17px}.road h3{color:#f1ca7a;font-size:1.08rem;margin-bottom:5px}.road p{font-size:.82rem}.road a{color:#fff;font-weight:700}
+footer{text-align:center;padding:28px 16px 40px;color:var(--muted);font-size:.8rem}footer a{color:var(--water);font-weight:700}
+.leaflet-popup-content{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;text-align:right;direction:rtl;line-height:1.6}.leaflet-popup-content a{color:#216c74;font-weight:700}
+.marker{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,.35)}.marker span{display:block;transform:rotate(45deg);text-align:center;line-height:24px;color:#fff;font-weight:700;font-size:12px}.marker.sleep{background:var(--sleep)}.marker.pass{background:var(--pass)}.marker.visit{background:var(--visit)}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(4,1fr)}.bases,.road-grid{grid-template-columns:1fr}.day{grid-template-columns:70px 1fr}.day-map{grid-column:1/-1;border-inline-start:0;border-top:1px dashed var(--line);padding:10px}.day-map a{width:100%}#map{height:470px}}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:5px}.day{grid-template-columns:58px 1fr}.day-body{padding:14px}.day-date b{font-size:1.25rem}.map-foot{align-items:stretch}.map-links{width:100%}.map-link{flex:1;text-align:center}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap">
-    <span class="eyebrow">رحلة كرفان · 19–29 سبتمبر 2026</span>
-    <h1>من ستوكهولم إلى فيوردات النرويج</h1>
-    <p class="sub">اضغط على أي يوم لعرض الصور الحقيقية للمدينة والمخيم، والمرافق، والتقييمات، وروابط الحجز.</p>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">🚐 النسخة الجديدة · 19–29 سبتمبر 2026</span>
+      <h1>ستوكهولم ← أوسلو ← فوس ← سترين</h1>
+      <p>رحلة أهدأ تعتمد على ثلاثة مخيمات رئيسية: يوم كامل لأوسلو، ثلاثة ليالٍ بين ريف فوس وشلالاته، وأربع ليالٍ في سترين لزيارة غيرانغر ولوين ولوفاتنت وبريكسدال.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#route-map">🗺️ افتح الخريطة</a>
+        <a class="btn btn-ghost" href="#itinerary">📅 البرنامج اليومي</a>
+        <a class="btn btn-ghost" href="original-plan.html">↩ النسخة السابقة</a>
+      </div>
+    </div>
     <div class="stats">
       <div class="stat"><b>11</b><span>يومًا</span></div>
-      <div class="stat"><b>10</b><span>ليالٍ في المخيمات</span></div>
-      <div class="stat"><b>~2900</b><span>كم</span></div>
-      <div class="stat"><b>17</b><span>مدينة وبلدة</span></div>
+      <div class="stat"><b>10</b><span>ليالٍ</span></div>
+      <div class="stat"><b>3</b><span>ليالٍ في فوس</span></div>
+      <div class="stat"><b>4</b><span>ليالٍ في سترين</span></div>
     </div>
   </div>
-  <!-- مشهد الكرفان -->
-  <svg class="hero-scene" viewBox="0 0 1000 230" preserveAspectRatio="xMidYMax slice" aria-label="رسم توضيحي لكرفان يسير بين جبال الفيورد">
-    <defs>
-      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#245158" stop-opacity="0"/><stop offset="1" stop-color="#1B4048"/>
-      </linearGradient>
-    </defs>
-    <rect width="1000" height="230" fill="url(#sky)"/>
-    <!-- جبال بعيدة -->
-    <path d="M0,150 L90,84 L170,138 L260,66 L350,142 L430,96 L520,150 L610,78 L700,140 L790,92 L880,146 L1000,88 L1000,230 L0,230 Z" fill="#1E4750"/>
-    <path d="M0,176 L120,120 L230,170 L340,116 L470,176 L590,126 L710,172 L830,124 L1000,170 L1000,230 L0,230 Z" fill="#2A5A63"/>
-    <!-- ثلوج القمم -->
-    <path d="M260,66 L278,86 L268,84 L258,92 L246,82 Z M610,78 L628,98 L616,94 L606,102 L594,94 Z" fill="#E9F0EF" opacity=".85"/>
-    <!-- الطريق -->
-    <path d="M0,230 L1000,230 L1000,206 C820,196 640,200 460,204 C300,208 140,206 0,214 Z" fill="#31424A"/>
-    <path d="M40,216 h50 M140,214 h50 M240,212 h50 M340,210 h50 M440,209 h50 M540,208 h50 M640,207 h50 M740,206 h50 M840,205 h50" stroke="#D9A441" stroke-width="3" stroke-dasharray="26 24" opacity=".8"/>
-    <!-- الكرفان -->
-    <g transform="translate(560,120)">
-      <rect x="0" y="18" width="196" height="72" rx="16" fill="#F3F6F5"/>
-      <path d="M0,54 h196 v22 a14,14 0 0 1 -14,14 h-168 a14,14 0 0 1 -14,-14 Z" fill="#2E6E73"/>
-      <path d="M196,90 h34 c10,0 16,-8 16,-18 v-26 c0,-8 -5,-14 -12,-17 l-38,-11 Z" fill="#F3F6F5"/>
-      <path d="M196,58 h50 v14 c0,10 -6,18 -16,18 h-34 Z" fill="#2E6E73"/>
-      <rect x="206" y="28" width="30" height="22" rx="4" fill="#9FC4C7"/>
-      <rect x="16" y="28" width="40" height="24" rx="5" fill="#9FC4C7"/>
-      <rect x="70" y="28" width="40" height="24" rx="5" fill="#9FC4C7"/>
-      <rect x="124" y="28" width="40" height="24" rx="5" fill="#9FC4C7"/>
-      <rect x="8" y="8" width="120" height="8" rx="4" fill="#D9A441"/>
-      <circle cx="52" cy="92" r="17" fill="#1C2B30"/><circle cx="52" cy="92" r="8" fill="#B9CFCC"/>
-      <circle cx="206" cy="92" r="17" fill="#1C2B30"/><circle cx="206" cy="92" r="8" fill="#B9CFCC"/>
-      <rect x="240" y="66" width="8" height="6" rx="2" fill="#F6D57A"/>
-    </g>
-  </svg>
 </header>
 
-<section id="caravan">
+<main>
+<section id="route-map">
   <div class="wrap">
     <div class="section-head">
-      <h2>🚐 الكرفان — المواصفات</h2>
-      <p>الكرفان المعتمد لهذه الرحلة: كرفان «شبه مدمج» (Semi-Integrated) مريح يتّسع للعائلة. اضغط الصور المصغّرة لتصفّح الكرفان من الخارج والداخل.</p>
+      <div><h2>الخريطة والمسار</h2><p>الخريطة التفاعلية تميّز أماكن النوم عن محطات المرور والزيارات. الخطوط داخل الصفحة توضيحية؛ استخدم أزرار خرائط Google للحصول على مسار القيادة الفعلي.</p></div>
     </div>
-    <div class="van">
-      <div class="van-gallery">
-        <div class="van-main"><img id="vanMain" src="https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_CU_2025_1502_21-31-41_WEB.jpg/w=2560" alt="الكرفان — صورة خارجية"></div>
-        <div class="van-thumbs" id="vanThumbs"></div>
-      </div>
-      <div class="van-specs">
-        <h3>Carado — كرفان شبه مدمج</h3>
-        <span class="model-tag">فئة TouringCars · طرازات T447 / T448</span>
-        <div class="spec-row"><span class="k">أماكن النوم</span><span class="v">حتى 4 أشخاص</span></div>
-        <div class="spec-row"><span class="k">مقاعد بأحزمة أمان</span><span class="v">4 مقاعد</span></div>
-        <div class="spec-row"><span class="k">الطول التقريبي</span><span class="v">≈ 6.99 م</span></div>
-        <div class="spec-row"><span class="k">العرض / الارتفاع</span><span class="v">≈ 2.32 م / ≈ 2.9 م</span></div>
-        <div class="spec-row"><span class="k">الوزن الإجمالي</span><span class="v">حتى 3,500 كجم</span></div>
-        <div class="spec-row"><span class="k">المحرك وناقل الحركة</span><span class="v">Fiat Ducato 2.2 ديزل · أوتوماتيك</span></div>
-        <div class="spec-row"><span class="k">المياه العذبة / الصرف</span><span class="v">≈ 120 ل / ≈ 90 ل</span></div>
-        <div class="spec-row"><span class="k">التدفئة والطاقة</span><span class="v">Truma (غاز/كهرباء) · 220 فولت</span></div>
-        <div class="facilities" style="margin-top:12px">
-          <span class="fac">مطبخ</span><span class="fac">ثلاجة</span><span class="fac">دورة مياه ودُش</span>
-          <span class="fac">تدفئة</span><span class="fac">طاولة طعام</span><span class="fac">خزائن تخزين</span>
+    <div class="notice">تنبيه: الطريق الطبيعي في اليوم الأول يمر بمحور كارلستاد، لكن لا توجد إقامة أو يوم مستقل هناك. أصبحت الرحلة مباشرة من ستوكهولم إلى أوسلو كما طُلب.</div>
+    <div class="map-shell">
+      <div id="map" aria-label="خريطة تفاعلية لمسار رحلة الكرفان"></div>
+      <div class="map-foot">
+        <div class="legend"><span><i class="dot sleep"></i> نوم / مخيم</span><span><i class="dot pass"></i> مرور</span><span><i class="dot visit"></i> زيارة نهارية</span></div>
+        <div class="map-links">
+          <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stockholm%2C%20Sweden&destination=Stryn%2C%20Norway&travelmode=driving&waypoints=Oslo%2C%20Norway%7CV%C3%B8ringsfossen%2C%20Norway%7CVossevangen%2C%20Norway%7CTvindefossen%2C%20Norway%7CFl%C3%A5m%2C%20Norway">المسار الرئيسي في Google</a>
+          <a class="map-link alt" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stryn%2C%20Norway&destination=Stryn%2C%20Norway&travelmode=driving&waypoints=Loen%20Skylift%2C%20Norway%7CLovatnet%2C%20Norway%7CBriksdal%20Glacier%2C%20Norway">جولة سترين الغربية</a>
+          <a class="map-link alt" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stryn%2C%20Norway&destination=Stryn%2C%20Norway&travelmode=driving&waypoints=Hellesylt%2C%20Norway%7CGeiranger%2C%20Norway%7CDalsnibba%2C%20Norway">جولة غيرانغر</a>
         </div>
-        <div class="note-inline" style="margin-top:12px">⚠️ الأرقام تقديرية لطراز Carado شبه المدمج — يُرجى تأكيد المواصفات الدقيقة من عقد الإيجار (TouringCars). ملاحظة: الطول ≈ 7م ضمن حد ترولستيغن (13.1م).</div>
       </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>البرنامج اليومي — اضغط على أي يوم</h2>
-      <p>صورة كبيرة للمعلم أو المدينة، وصورة مصغّرة للمخيم في زاوية كل بطاقة. النافذة المنبثقة تعرض كل التفاصيل والتقييمات.</p>
-    </div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="tips">
-      <h2>نصائح عملية للكرفان</h2>
-      <p>أهم ما يجب ترتيبه قبل الانطلاق</p>
-      <div class="tips-grid">
-        <div class="tip"><h4>الحجز المسبق</h4><p>أواخر سبتمبر خارج الموسم: الاستقبال يغلق مبكرًا وبعض المخيمات تقفل منتصف الشهر. اتصل أو احجز إلكترونيًا خصوصًا في غيرانغر وأوندالسنس.</p></div>
-        <div class="tip"><h4>رسوم الطرق</h4><p>سجّل مركبتك في Epass24 أو AutoPASS قبل السفر — المركبات فوق 3.5 طن تدفع تعرفة أعلى.</p></div>
-        <div class="tip"><h4>العبّارات</h4><p>عبّارات إيدسدال–لينغه وطريق الأطلسي بدون حجز: صعود مباشر والدفع عبر لوحة المركبة.</p></div>
-        <div class="tip"><h4>الطقس</h4><p>توقّع 5–12° وأمطارًا. ترولستيغن ودالسنيبا قد يُغلقان بعد الأمطار — تابع vegvesen.no يوميًا. حد الطول على ترولستيغن 13.1م.</p></div>
-        <div class="tip"><h4>تفريغ المياه</h4><p>محطات في ليلهامر (مجانًا)، فالدال، غيرانغر، وإيستردالن أسفل ترولستيغن.</p></div>
-        <div class="tip"><h4>الوقود والتسوق</h4><p>الأسعار في النرويج أعلى — تزوّد في كارلستاد قبل الحدود، وفي أوستيرسوند عند العودة.</p></div>
-      </div>
+    <div class="bases">
+      <article class="base"><small>ليلتان · 19–20 سبتمبر</small><h3>أوسلو</h3><p>Topcamp Bogstad — الوصول من ستوكهولم ثم يوم كامل للعاصمة بدون تحريك الكرفان.</p></article>
+      <article class="base"><small>3 ليالٍ · 21–23 سبتمبر</small><h3>Vossevangen</h3><p>Voss Camping — قاعدة للشلالات والريف: Tvindefossen وStalheim وSkjervsfossen وSteinsdalsfossen.</p></article>
+      <article class="base"><small>4 ليالٍ · 24–27 سبتمبر</small><h3>سترين</h3><p>Mindresunde Camping — قاعدة واحدة لغيرانغر، لوين، لوفاتنت، أولدن وبريكسدال.</p></article>
     </div>
   </div>
 </section>
 
-<footer>الصور والتقييمات من مساهمي خرائط Google · رسم الكرفان توضيحي · رحلة 19–29 سبتمبر 2026</footer>
+<section id="itinerary" style="padding-top:12px">
+  <div class="wrap">
+    <div class="section-head"><div><h2>البرنامج اليومي</h2><p>كل بطاقة توضح مكان النوم، المدن والقرى التي يمر بها المسار، والمخيم المقترح.</p></div></div>
+    <div class="days" id="days"></div>
+  </div>
+</section>
 
-<!-- النافذة المنبثقة -->
-<div class="overlay" id="overlay" role="dialog" aria-modal="true">
-  <div class="modal" id="modal"></div>
-</div>
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="section-head"><div><h2>ملاحظات الطريق في أواخر سبتمبر</h2><p>هذه النقاط مهمة خصوصًا للكرفان والطرق الجبلية.</p></div></div>
+    <div class="road-grid">
+      <article class="road"><h3>الطريق القديم Rv258</h3><p>Gamle Strynefjellsvegen طريق موسمي ضيق وقد أُغلق في أعوام سابقة ابتداءً من 15 سبتمبر. استخدم Rv15 كنقطة افتراضية وتحقق يوميًا من <a href="https://www.vegvesen.no/trafikk" target="_blank" rel="noopener">Vegvesen</a>.</p></article>
+      <article class="road"><h3>غيرانغر ودالسنيبا</h3><p>اجعل دالسنيبا اختيارية حسب الطقس وحالة الطريق. إذا تعذر المسار الجبلي، تبقى رحلة Hellesylt–Geiranger البحرية والعودة من الطريق المتاح بديلًا جيدًا.</p></article>
+      <article class="road"><h3>المخيمات المختارة</h3><p>Voss Camping يعمل طوال العام وموسمه الكامل حتى 30 سبتمبر. Mindresunde مفتوح حتى 1 نوفمبر، ولذلك يلائمان تواريخ الرحلة.</p></article>
+    </div>
+  </div>
+</section>
+</main>
 
+<footer>الخريطة داخل الصفحة توضيحية وتعتمد على OpenStreetMap · مسارات القيادة تفتح في خرائط Google · <a href="original-plan.html">فتح الخطة السابقة</a></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-const G="https://lh3.googleusercontent.com/place-photos/";
-const M="https://maps.google.com/?cid=";
+const q=s=>encodeURIComponent(s);
+const gm=(origin,destination,waypoints=[])=>`https://www.google.com/maps/dir/?api=1&origin=${q(origin)}&destination=${q(destination)}&travelmode=driving${waypoints.length?`&waypoints=${waypoints.map(q).join('%7C')}`:''}`;
+
 const DAYS=[
-{n:1,date:"السبت 19 سبتمبر",title:"ستوكهولم ← كارلستاد",km:"300 كم · ≈ 3.5 ساعات",
- desc:"يوم انطلاق مريح عبر الطريق E18 حتى بحيرة فينرن، أكبر بحيرات السويد. أمسية هادئة على الشاطئ.",
- images:[{u:G+"AG9NLjCYywlHlIiT6Brfw7nRCV2aQg0Bl2mu8WeRhLeKCJmPt4dmTq42I0Ba84j5w-FjTZLI_XZowiryx-0DnPBkE_jU9PjuDolV4HVQ2FVBNphtHysTf_C5xTXgURzHrPqvin4DRUYUfvrrrANOIVI=s4800-w800-h600",c:"مخيم First Camp Skutberget على بحيرة فينرن"}],
- camp:{name:"First Camp Skutberget",fac:["كهرباء","دُش ومرافق صحية","مطبخ مشترك","تفريغ مياه","مسارات مشي"],phone:"+4654535130",web:"https://firstcamp.se/destination/skutberget-karlstad/",rating:3.9,count:1669,gmap:M+"2953324915553931345"},
- sights:[{name:"ممشى بحيرة فينرن وساحة كارلستاد الكبيرة"}]},
-
-{n:2,date:"الأحد 20 سبتمبر",title:"كارلستاد ← أوسلو",km:"220 كم · ≈ 3 ساعات",
- desc:"عبور الحدود إلى النرويج والوصول مبكرًا لقضاء بعد الظهر في العاصمة: سطح دار الأوبرا، الواجهة البحرية، وحديقة فيغلاند.",
- images:[{u:G+"AG9NLjASMmac6LVJew-bkK6uYblbXJWIZdLntSqLg7KrQcKHozaJaAoqoR7wZXvMAEVHpEcGX9wXh_zFl5l99LwJP3MybmI8OJhFgSxvNQo218EhE5OpoUeDWYJnP2EvwlXjFxoRc5iUSOVFrVaCTFY=s4800-w800-h600",c:"دار أوبرا أوسلو — يمكن المشي على سطحها"},
-        {u:G+"AG9NLjDbjwc0TC6QPkVCjk9py02G_iImIZInRBfALHEXEg9eb64XQ3b1vIYPPJm_QYS47Cgfe24Em0VV_zIqOZDcqN3007gFtHaTLf_XtvX8BPKgfooDYVn7fqEkU9IeudO9gGeNelPYiDWFjVLLakA=s4800-w800-h600",c:"مخيم Topcamp Bogstad — مفتوح طوال العام"}],
- camp:{name:"Topcamp Bogstad",fac:["كهرباء","مرافق حديثة","تفريغ مياه","غسيل ملابس","حافلة للمركز"],phone:"+4722510800",web:"https://topcamp.no/topcamp-bogstad",rating:3.8,count:2726,gmap:M+"80093192416999898"},
- sights:[{name:"دار أوبرا أوسلو",rating:4.7,count:31143,gmap:M+"2069025550397265425"},{name:"واجهة Aker Brygge وحديقة فيغلاند"}]},
-
-{n:3,date:"الاثنين 21 سبتمبر",title:"أوسلو ← ليلهامر",km:"185 كم · ≈ 2.5 ساعة",
- desc:"صباح في متاحف أوسلو، ثم طريق E6 بمحاذاة بحيرة ميوسا إلى مدينة الأولمبياد الشتوي 1994 وشارعها الخشبي التاريخي.",
- images:[{u:G+"AG9NLjBaNWtT4OCu69ygfuvyOTQglSM3eb7FKLLtikHzm8XRy6dgQuUwBRLCUFlTfIzoDku1MIGPkl6hcPniP7n9kDFzrTxMeNOD8QLxtN_J-ctcCTKPCNSLKasms2Hy1Y_btrb_BTm5TV_2SL2WK94qMSntGg=s4800-w800-h600",c:"مخيم Lillehammer Turistsenter"}],
- camp:{name:"Lillehammer Turistsenter",fac:["كهرباء","تفريغ مياه مجاني","مرافق صحية","قرب وسط المدينة"],phone:"+4761259710",web:"https://www.lillehammerturistsenter.no/nb",rating:4.2,count:960,gmap:M+"7399166194176885519"},
- sights:[{name:"شارع Storgata، منصة القفز الأولمبية، متحف Maihaugen"}]},
-
-{n:4,date:"الثلاثاء 22 سبتمبر",title:"ليلهامر ← لوم ← سترين",km:"310 كم · ≈ 4.5 ساعات",
- desc:"صعود وادي غودبراندسدالن، توقف في بلدة لوم وكنيستها الخشبية من القرن الثاني عشر، ثم النزول المذهل إلى نورد-فيورد.",
- images:[{u:G+"AG9NLjCbkQJ9J10sFXj7V9Qg_3_MZ50WOq7IU3PwtoknPeGAEk4MeWH_bsvqJVLJv1wJongSIAykzBScmR_C2n6hIeeo6kG51Ao-7mkCPpqqABrGuHkJejoG8LDBHc8n1BW45vYBpsqip9GhC4VRVg=s4800-w800-h600",c:"كنيسة لوم الخشبية التاريخية"},
-        {u:G+"AG9NLjBFD3t0hhpRtcmq3mHkIRXgcglsikkDi6Bn6bObhIV5bJIbY2CXaqoBjFLuNmoLBZ1anhi1VmCah9twUNR7jE_TozHALft76QSrjvItpvXTgNztnNKJLt8h7LfteTheiKN-5ZcoqSWiGB9O1Q=s4800-w800-h600",c:"مخيم Mindresunde على بحيرة سترينفاتنت"}],
- camp:{name:"Mindresunde Camping — سترين",fac:["كهرباء","مرافق مجددة","إطلالة جليدية","قوارب للإيجار","مفتوح حتى 1 نوفمبر"],phone:"+4757877532",web:"http://www.mindresunde.no/",rating:4.4,count:482,gmap:M+"3559967719631580002"},
- sights:[{name:"كنيسة لوم الخشبية",rating:4.6,count:2801,gmap:M+"10142264748532470450"},{name:"مخبز Bakeriet i Lom وشلالات Videseter"}]},
-
-{n:5,date:"الأربعاء 23 سبتمبر",title:"لوين ولوفاتنت ← غيرانغر",km:"90 كم مع التوقفات",
- desc:"أجمل أيام الرحلة: تلفريك لوين إلى قمة هوفن (1011م)، بحيرة لوفاتنت الفيروزية، ثم عبور ممر سترين-فيلت والنزول إلى غيرانغر عبر مطل أورنسفينغن.",
- images:[{u:G+"AG9NLjCH32_Y3lRj8R2EQXHJNDXPuF7R9Vn4ONdYlGyqxI0Awl8fILuHjG2ZcHuXb3WLKum5B2B3B4I-BVlh6E4JuIcLRKNz8l5L_yWwophYhuseN3KjauRGK2Traol_84soEiIbF7eulU09bbml_w=s4800-w800-h600",c:"فيورد غيرانغر من مطل أورنسفينغن"},
-        {u:G+"AG9NLjDc7QKJT6hKmpgPmXPBD9Q_Wggrhv5fK5pV4v9rPq-9h8WuIVuboC-W2WwwFfrjadZe4DJkMYfaRYWbPjLBdJCecX02-mFCfYDjKPcwHf66vyMC0LjAwa2tB3_MSaAW1-m4Y1tqtrweSHF1AfZJgIsKXA=s4800-w800-h600",c:"تلفريك Loen Skylift"},
-        {u:G+"AG9NLjCaQwT-AurSUQsusjMHmdS53DKfdbwt0CihigbddFRXPEXDQ4aJHl7gjZJuP6vfZRmLI5m8AEEXWrLTdqr8--momiXbXVIjT3lJAm-OuYtcytwOJ9k_P29qL76J6CT8UyANbPgxgD17Y1Vi1atodvdlWA=s4800-w800-h600",c:"بحيرة لوفاتنت الفيروزية"},
-        {u:G+"AG9NLjC01wYAtcmvzOZLSv09ue1VlYRaR3mHbYVC50K4i47uM-rAKTKI9YUPX8I2QJQng60I6wqG7sXDHYiS06eAtCBK_h4UNigHSAwkgANHWjxK6lhH7TIa5kcHFBpqzBi_D2KCgzieVURTQ-XAGfE=s4800-w800-h600",c:"مخيم Geirangerfjorden Feriesenter على ضفة الفيورد"}],
- camp:{name:"Geirangerfjorden Feriesenter",fac:["كهرباء","مواقع على الماء مباشرة","مرافق صحية","مفتوح طوال سبتمبر"],web:"http://www.geirangerfjorden.net/",rating:4.6,count:1366,gmap:M+"10969444886202983181"},
- sights:[{name:"تلفريك Loen Skylift",rating:4.6,count:719,gmap:M+"5656349522386604592"},{name:"بحيرة Lovatnet",rating:4.9,count:362,gmap:M+"18419002113885521280"},{name:"مطل Ørnesvingen",rating:4.8,count:6130,gmap:M+"9292303648253681165"}],
- note:"⚠️ مع الكرفان استخدم نفق Rv15 وتجنّب الطريق القديم Rv258 الضيّق."},
-
-{n:6,date:"الخميس 24 سبتمبر",title:"غيرانغر ← ترولستيغن ← أوندالسنس",km:"95 كم + عبّارة قصيرة",
- desc:"جولة بحرية في الفيورد (اليونسكو) وشلالات الأخوات السبع صباحًا، ثم طريق النسر، عبّارة إيدسدال، ومنعطفات ترولستيغن الأحد عشر. المبيت أمام جدار الترول.",
- images:[{u:G+"AG9NLjAs3cdn1Cy1gASeIviV2ZSUNzvNnmPuf676X8AfKHlZJWFl7qcTuqBqImBW3Vw7R_7br6ele734ar7j63jkGIThmueCcoKTV0SdZK5u7l23phyoN1kJXVuvBMX5affdNKi0q5ErnanGvob_ow=s4800-w800-h600",c:"طريق ترولستيغن من منصة المشاهدة"},
-        {u:G+"AG9NLjALWTFlsRO55QqB5y5jeCGaEt9TLaQHnCf82Ldh1HpUnzNONO8rXytW7G3DsTaTu_FRFzRGlJPLnFKhuvOjT8ydLSSp4Qc5e6Sd7Iai1JVDQkMV_ad0BFMOgGuDKyUCQxP5kv7iWLWpCyXGFiU=s4800-w800-h600",c:"مخيم Trollveggen أمام جدار الترول"}],
- camp:{name:"Trollveggen Camping",fac:["كهرباء","مبنى خدمات حديث","تفريغ مياه","إطلالة على جدار الترول"],phone:"+4740092002",web:"http://www.trollveggen.com/",rating:4.6,count:658,gmap:M+"10394117847628548697"},
- sights:[{name:"مطل ترولستيغن",rating:4.8,count:7024,gmap:M+"16761776795772381269"},{name:"جولة الفيورد وشلالات الأخوات السبع"}],
- note:"⚠️ حد الطول على ترولستيغن 13.1م — تحقق من vegvesen.no بعد الأمطار. البديل: E136 عبر وادي رومسدالن."},
-
-{n:7,date:"الجمعة 25 سبتمبر",title:"أوندالسنس ← أوليسوند",km:"120 كم · ≈ 2 ساعة",
- desc:"تلفريك رومسدالن اختياريًا صباحًا، ثم إلى أوليسوند — أجمل مدينة نرويجية بطراز «آرت نوفو» — وصعود مطل أكسلا وقت الغروب.",
- images:[{u:G+"AG9NLjBIJc6ltUlIdW0EdTSnT9q4xzCa7JjyGtQ84Cf3AuUUV0C7vxHmAS4sVb67asGNhOma1wbhFDnoIBOEi3SXV4b0zEZ-_Qh3PRFdz8WYAMGVbmDoX8bIpZrCzD6wh0DRLktATOrWK2DcJ4QuBVVY-TprMg=s4800-w800-h600",c:"أوليسوند من مطل أكسلا"},
-        {u:G+"AG9NLjABYC5IsOfiNYEn6EZz-MxLYGaNUUZ_5rk-1QgVZxrVU8kaEEqptHo2LsJ1TPgpPidM99hQ3PjSAD2OYAAtnlhzWWhs-BCiNIIaYpuqLkwlpePCJBZeu5AisGQTeADKeMNgh4R8xbx-VJLrkUexv76Nag=s4800-w800-h600",c:"مخيم Volsdalen — الأقرب لوسط المدينة"}],
- camp:{name:"Volsdalen Camping",fac:["كهرباء","مرافق أساسية","الأقرب للمركز","استقبال 10–11:30ص و2–8م"],phone:"+4770125890",web:"http://www.volsdalencamping.no/",rating:3.3,count:932,gmap:M+"16478362332205580813"},
- sights:[{name:"مطل أكسلا",rating:4.8,count:3457,gmap:M+"14965436119725706251"},{name:"حي آرت نوفو والمرفأ الداخلي"}]},
-
-{n:8,date:"السبت 26 سبتمبر",title:"أوليسوند ← طريق الأطلسي ← كريستيانسوند",km:"200 كم + عبّارتان",
- desc:"قيادة أحد أشهر طرق العالم: جسور طريق الأطلسي فوق المحيط مباشرة، مع توقفات في مطل Askevågen وممشى جزيرة Eldhusøya.",
- images:[{u:G+"AG9NLjCgkpF92jvUs5K6XglFBk5KeklIeXBagUYFls6MVvueGaEiR_1Ic4e3cFoXiStg36bZ9wndwQKmtCTUJU4seQ7FLE4I6eDFINNQEjol4kNwyFqw5FKajWxziHqV9B4BDv92pye-oWDg-bSgVhM=s4800-w636-h480",c:"طريق الأطلسي وجسر Storseisundet"},
-        {u:G+"AG9NLjCLqZVO5vJ7czmjkcT22FBPe7hzVFuSMoY2lTB-3FN7BSWNmGhCgdteoJMYPTVv24_1DT_IvB9zy0B3LOZBMw3tpa7waaLZxpwtsQF4DsZ82D24z0z1WMWdagSZ72LvSxHUDBnmxQHi3UoXWyU=s4800-w800-h600",c:"مخيم Atlanten Turistsenter — كريستيانسوند"}],
- camp:{name:"Atlanten Turistsenter",fac:["كهرباء","مطعم وفطور","مرافق صحية","20 دقيقة مشيًا للمرفأ"],phone:"+4771671104",web:"https://www.atlanten.no/",rating:3.6,count:538,gmap:M+"13422555690389029154"},
- sights:[{name:"طريق الأطلسي",rating:4.6,count:1564,gmap:M+"2317850511238614598"},{name:"مدينة كريستيانسوند الملونة (عاصمة الباكالاو)"}]},
-
-{n:9,date:"الأحد 27 سبتمبر",title:"كريستيانسوند ← تروندهايم",km:"200 كم · ≈ 3 ساعات",
- desc:"بداية خط العودة. بعد الظهر في تروندهايم: كاتدرائية نيداروس القوطية، حي باكلاندت الملون، والجسر القديم.",
- images:[{u:G+"AG9NLjCAn2nlAaKsFAntk1I_dIbBEQd8vPJltAkOZt5cUkLWPfiZL003t_sLb422sYCbHkacl8rRpZauOrGuzqs5bjoUycp9BLlSUlb5DlpcvQl4jyXZ5sfqh9H66kPD74T4sINQWTkBPpVTpRdRrJM=s4800-w800-h600",c:"كاتدرائية نيداروس — تروندهايم"},
-        {u:G+"AG9NLjB7xgCl5wyVAK9UfZLckkAZCbpjDTh2a3n6XqKHx0Tmm9udMDlBLmXM6ukLGX2Bbmlamh-Atk8L5fBIodHVZAEz0rMeauu5xTNKKqIAU1eEWRaDMB6gDfgQl4tvjRQUqg0L4X0DPRdUF25j=s4800-w640-h480",c:"مخيم Storsand Gård على الفيورد"}],
- camp:{name:"Storsand Gård Camping",fac:["كهرباء","على الفيورد","حافلة مباشرة للمركز","استقبال 8ص–11م"],phone:"+4773976360",web:"https://storsandcamping.no/",rating:4.0,count:1822,gmap:M+"17676502654850391319"},
- sights:[{name:"كاتدرائية نيداروس",rating:4.7,count:11831,gmap:M+"13359294859797295613"},{name:"حي باكلاندت والجسر القديم"}]},
-
-{n:10,date:"الاثنين 28 سبتمبر",title:"تروندهايم ← أوره ← أوستيرسوند",km:"250 كم · ≈ 3.5 ساعات",
- desc:"العودة إلى السويد عبر E14 — مناظر جديدة كليًا: غداء في قرية أوره الجبلية، شلال Tännforsen، ثم بحيرة ستورشون.",
- images:[{u:G+"AG9NLjD8Nd1xxV2bi19lus-sqsys7GTbVY_kFwp3Cmkajm0Diyowb1M2dd6GgcgPRkveamZwks8waGHlMsIVhWSb8BeGEper0hxqFiOF6ZbON1jmv0mfjJVGETfLWsu_Ik8mZtzE4oljnLhMGj1E=s4800-w800-h600",c:"قرية أوره الجبلية"},
-        {u:G+"AG9NLjAKf9IZaCQluGUmvHFozgXaFnasfKaR3SL4GooG0G-k44z0v8_FS_CfOb3uszvaiqjvgnbsQNB8wU9ntSKtEL5u4z7LdFVWci7aawM_Xwg6VWWqO_hYnb6ZXCvR_nYGctenoDtSJ6mAucxQFw=s4800-w800-h600",c:"مخيم Östersunds Stugby & Camping"}],
- camp:{name:"Östersunds Stugby & Camping",fac:["كهرباء","مواقف مرصوفة","تفريغ مياه","كبائن"],phone:"+4663144615",web:"http://www.ostersundscamping.se/",rating:4.1,count:1363,gmap:M+"17350706845757146427"},
- sights:[{name:"قرية أوره",rating:4.2,count:76,gmap:M+"603264302447744502"},{name:"شلال Tännforsen — الأكبر في السويد"}]},
-
-{n:11,date:"الثلاثاء 29 سبتمبر",title:"أوستيرسوند ← ستوكهولم",km:"550 كم · ≈ 6.5 ساعات",
- desc:"آخر يوم: نزول طويل عبر سوندسفال ثم طريق E4 الساحلي، مع استراحة قهوة في يفلا أو أوبسالا، والوصول إلى ستوكهولم مساءً.",
- images:[{u:G+"AG9NLjDs2Th-RP9ON5gzrqOFd7sOUFc_K517l2AfDlaFT59-NyK5qzGn6hr03BvbS5fOil3llej9bV5xtOdFqVw-BV0LZ91pizkaTINMmjXtITAsvVj0zrxcUaankvh54kMFCi61qYzS2I4LlbhvNijjJ_M6=s4800-w800-h600",c:"غاملا ستان — البلدة القديمة في ستوكهولم"}],
- sights:[{name:"غاملا ستان (البلدة القديمة)",gmap:M+"2738468898257406737"},{name:"استراحة في سوندسفال أو يفلا"}]}
+ {n:1,dow:'السبت',date:'19 سبتمبر',title:'ستوكهولم ← أوسلو',drive:'≈ 520 كم · 6–7 ساعات',desc:'استلام الكرفان والانطلاق مباشرة إلى أوسلو. يوم قيادة طويل؛ خطط لتوقفين على الأقل.',sleep:'أوسلو',passes:['أوربرو','محور كارلستاد — مرور فقط'],camp:'Topcamp Bogstad',campUrl:'https://topcamp.no/topcamp-bogstad',map:gm('Stockholm, Sweden','Topcamp Bogstad, Oslo, Norway',['Örebro, Sweden'])},
+ {n:2,dow:'الأحد',date:'20 سبتمبر',title:'يوم كامل في أوسلو',drive:'تنقل محلي',desc:'دار الأوبرا، Aker Brygge، حديقة فيغلاند أو المتاحف. اترك الكرفان في المخيم واستخدم النقل العام.',sleep:'أوسلو',passes:['وسط أوسلو','Bygdøy — اختياري'],camp:'Topcamp Bogstad · الليلة الثانية',campUrl:'https://topcamp.no/topcamp-bogstad',map:'https://www.google.com/maps/search/?api=1&query=Oslo%20attractions'},
+ {n:3,dow:'الاثنين',date:'21 سبتمبر',title:'أوسلو ← Vøringsfossen ← Vossevangen',drive:'≈ 400 كم · 6–7 ساعات مع التوقف',desc:'عبور الريف والهضاب نحو فوس مع زيارة شلال Vøringsfossen. هذا المسار يتجنب المرور المبكر بفلام.',sleep:'Vossevangen',passes:['Hønefoss','Geilo','Eidfjord','Vøringsfossen'],camp:'Voss Camping',campUrl:'https://vosscamping.no/en/',map:gm('Oslo, Norway','Voss Camping, Norway',['Geilo, Norway','Vøringsfossen, Norway','Eidfjord, Norway'])},
+ {n:4,dow:'الثلاثاء',date:'22 سبتمبر',title:'شلالات فوس الشمالية',drive:'≈ 75 كم · جولة دائرية',desc:'يوم ريفي هادئ إلى Tvindefossen ثم مطل Stalheim ووادي Nærøydalen، والعودة إلى نفس المخيم.',sleep:'Vossevangen',passes:['Tvindefossen','Stalheim','Nærøydalen'],camp:'Voss Camping · الليلة الثانية',campUrl:'https://vosscamping.no/en/',map:gm('Voss Camping, Norway','Voss Camping, Norway',['Tvindefossen, Norway','Stalheim Hotel, Norway'])},
+ {n:5,dow:'الأربعاء',date:'23 سبتمبر',title:'شلالات هاردانغر من فوس',drive:'≈ 180 كم · جولة يومية',desc:'جولة إلى Skjervsfossen ثم Steinsdalsfossen قرب Norheimsund، مع وقت مرن للريف والبحيرات.',sleep:'Vossevangen',passes:['Skjervsfossen','Granvin','Norheimsund','Steinsdalsfossen'],camp:'Voss Camping · الليلة الثالثة',campUrl:'https://vosscamping.no/en/',map:gm('Voss Camping, Norway','Voss Camping, Norway',['Skjervsfossen, Norway','Steinsdalsfossen, Norway'])},
+ {n:6,dow:'الخميس',date:'24 سبتمبر',title:'Vossevangen ← فلام ← سترين',drive:'≈ 330 كم · 5–6 ساعات دون التوقفات',desc:'يوم الانتقال إلى قاعدة سترين. توقف في فلام والواجهة البحرية، ثم تابع عبر سوغندال وسكي.',sleep:'سترين',passes:['فلام','Aurland','Lærdal','Sogndal','Skei'],camp:'Mindresunde Camping · الليلة الأولى',campUrl:'https://www.mindresunde.no/campingen',map:gm('Voss Camping, Norway','Mindresunde Camping, Stryn, Norway',['Flåm, Norway','Lærdal, Norway','Sogndal, Norway','Skei, Norway'])},
+ {n:7,dow:'الجمعة',date:'25 سبتمبر',title:'لوين ولوفاتنت وبريكسدال',drive:'≈ 140 كم · جولة دائرية',desc:'ابدأ بتلفريك Loen Skylift، ثم بحيرة Lovatnet وأولدن ووادي بريكسدال. اختر الأنشطة حسب الطقس.',sleep:'سترين',passes:['Loen','Lovatnet','Olden','Briksdal'],camp:'Mindresunde Camping · الليلة الثانية',campUrl:'https://www.mindresunde.no/campingen',map:gm('Mindresunde Camping, Stryn, Norway','Mindresunde Camping, Stryn, Norway',['Loen Skylift, Norway','Lovatnet, Norway','Olden, Norway','Briksdal Glacier, Norway'])},
+ {n:8,dow:'السبت',date:'26 سبتمبر',title:'غيرانغر من قاعدة سترين',drive:'يوم كامل · المسافة حسب العبّارة والطريق المفتوح',desc:'اتجه إلى Hellesylt ثم غيرانغر. أضف دالسنيبا فقط إذا كان الطريق والطقس مناسبين للكرفان.',sleep:'سترين',passes:['Hellesylt','Geiranger','Dalsnibba — اختياري'],camp:'Mindresunde Camping · الليلة الثالثة',campUrl:'https://www.mindresunde.no/campingen',map:gm('Mindresunde Camping, Stryn, Norway','Mindresunde Camping, Stryn, Norway',['Hellesylt, Norway','Geiranger, Norway','Dalsnibba, Norway'])},
+ {n:9,dow:'الأحد',date:'27 سبتمبر',title:'سترين وهِيِلّه — يوم مرن',drive:'≈ 55 كم · قيادة خفيفة',desc:'يوم احتياطي للطقس: بحيرة Strynevatnet، قرية Hjelle ومسار Segestad، أو تعويض أي نشاط فات في اليومين السابقين.',sleep:'سترين',passes:['Stryn','Hjelle','Strynevatnet'],camp:'Mindresunde Camping · الليلة الرابعة',campUrl:'https://www.mindresunde.no/campingen',map:gm('Mindresunde Camping, Stryn, Norway','Mindresunde Camping, Stryn, Norway',['Hjelle, Norway'])},
+ {n:10,dow:'الاثنين',date:'28 سبتمبر',title:'سترين ← لوم ← ليلهامر',drive:'≈ 315 كم · 4.5–5.5 ساعات',desc:'بدء العودة عبر Rv15 الآمن افتراضيًا بدل الطريق القديم الموسمي، مع توقف في لوم وكنيستها الخشبية.',sleep:'ليلهامر',passes:['Hjelle','Grotli','Lom','Otta'],camp:'Lillehammer Turistsenter',campUrl:'https://www.lillehammerturistsenter.no/nb',map:gm('Mindresunde Camping, Stryn, Norway','Lillehammer Turistsenter, Norway',['Grotli, Norway','Lom, Norway','Otta, Norway'])},
+ {n:11,dow:'الثلاثاء',date:'29 سبتمبر',title:'ليلهامر ← ستوكهولم',drive:'≈ 610 كم · 7–8 ساعات',desc:'انطلاق مبكر والعودة إلى ستوكهولم عبر Kongsvinger وأوربرو. لا توجد ليلة مخيم بعد الوصول.',sleep:'نهاية الرحلة',passes:['Kongsvinger','Örebro','Stockholm'],camp:null,map:gm('Lillehammer, Norway','Stockholm, Sweden',['Kongsvinger, Norway','Örebro, Sweden'])}
 ];
 
-document.addEventListener("error",e=>{
-  const t=e.target;
-  if(t.tagName==="IMG"){
-    const ph=document.createElement("div");
-    ph.className=(t.className?t.className+" ":"")+"ph";
-    ph.textContent="🏔️";
-    ph.title=t.alt||"";
-    t.replaceWith(ph);
-  }
-},true);
-const grid=document.getElementById("grid");
-const overlay=document.getElementById("overlay");
-const modal=document.getElementById("modal");
-let curImgs=[],curIdx=0;
-
-function stars(r){if(!r)return"";const f=Math.round(r);return"★".repeat(f)+"☆".repeat(5-f);}
-
-DAYS.forEach((d,i)=>{
-  const card=document.createElement("div");
-  card.className="card";card.tabIndex=0;card.setAttribute("role","button");
-  card.setAttribute("aria-label","تفاصيل اليوم "+d.n+": "+d.title);
-  const campThumb=(d.images.length>1)?`<img class="camp-thumb" src="${d.images[d.images.length-1].u}" alt="صورة المخيم">`:"";
-  card.innerHTML=`
-    <div class="cover">
-      <img src="${d.images[0].u}" alt="${d.images[0].c}" loading="lazy">
-      <span class="dnum ${d.n>=9?'ret':''}">اليوم ${d.n}</span>
-      ${campThumb}
+document.getElementById('days').innerHTML=DAYS.map(d=>`
+  <article class="day">
+    <div class="day-date"><b>${d.n}</b><span>${d.dow}<br>${d.date}</span></div>
+    <div class="day-body">
+      <div class="day-top"><h3>${d.title}</h3><span class="badge ${d.n===11?'drive':'sleep'}">${d.n===11?'وصول':'نوم: '+d.sleep}</span>${[2,4,5,7,8,9].includes(d.n)?'<span class="badge base">بدون تغيير المخيم</span>':''}</div>
+      <div class="badge drive">🚐 ${d.drive}</div>
+      <p class="day-desc">${d.desc}</p>
+      <div class="stop-row">${d.passes.map(p=>`<span class="stop"><strong>مرور/زيارة:</strong> ${p}</span>`).join('')}</div>
+      ${d.camp?`<div class="camp"><b>🏕️ ${d.camp}</b><a href="${d.campUrl}" target="_blank" rel="noopener">الموقع والحجز</a></div>`:''}
     </div>
-    <div class="card-body">
-      <span class="date">${d.date}</span>
-      <h3>${d.title}</h3>
-      <div class="meta">🚐 ${d.km}${d.camp?` · 🏕️ ${d.camp.name}`:""}</div>
-      <div class="more">اضغط للتفاصيل والتقييمات ←</div>
-    </div>`;
-  card.addEventListener("click",()=>openModal(i));
-  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openModal(i);}});
-  grid.appendChild(card);
-});
+    <div class="day-map"><a href="${d.map}" target="_blank" rel="noopener">فتح مسار اليوم<br>في Google Maps</a></div>
+  </article>`).join('');
 
-function openModal(i){
-  const d=DAYS[i];curImgs=d.images;curIdx=0;
-  const campSec=d.camp?`
-    <div class="mb-sec">
-      <h4>🏕️ المخيم — يستقبل الكرفانات</h4>
-      <div class="rate-row">
-        <span class="rr-name">${d.camp.name}</span>
-        <span class="rr-meta">${d.camp.rating?`<span class="stars">${stars(d.camp.rating)}</span><b>${d.camp.rating}</b><span class="cnt">(${d.camp.count.toLocaleString("ar")} تقييم)</span>`:""}
-        <a href="${d.camp.gmap}" target="_blank" rel="noopener">اقرأ التقييمات</a></span>
-      </div>
-      <div class="facilities">${d.camp.fac.map(f=>`<span class="fac">${f}</span>`).join("")}</div>
-      <div class="contact-btns">
-        ${d.camp.phone?`<a class="btn-solid" href="tel:${d.camp.phone}">📞 اتصال</a>`:""}
-        ${d.camp.web?`<a class="btn-line" href="${d.camp.web}" target="_blank" rel="noopener">الموقع والحجز</a>`:""}
-      </div>
-    </div>`:"";
-  const sightsSec=d.sights?`
-    <div class="mb-sec">
-      <h4 style="color:var(--water)">📍 معالم اليوم</h4>
-      ${d.sights.map(s=>`<div class="rate-row"><span class="rr-name">${s.name}</span>
-        <span class="rr-meta">${s.rating?`<span class="stars">${stars(s.rating)}</span><b>${s.rating}</b><span class="cnt">(${s.count.toLocaleString("ar")})</span>`:""}
-        ${s.gmap?`<a href="${s.gmap}" target="_blank" rel="noopener">التقييمات والصور</a>`:""}</span></div>`).join("")}
-    </div>`:"";
-  modal.innerHTML=`
-    <div class="carousel">
-      <button class="close-x" onclick="closeModal()" aria-label="إغلاق">✕</button>
-      <img id="cimg" src="${curImgs[0].u}" alt="${curImgs[0].c}">
-      <div class="cap" id="ccap">${curImgs[0].c} · <small>صور خرائط Google</small></div>
-      ${curImgs.length>1?`<button class="cbtn prev" onclick="nav(-1)" aria-label="السابق">‹</button><button class="cbtn next" onclick="nav(1)" aria-label="التالي">›</button>`:""}
-    </div>
-    <div class="modal-body">
-      <span class="date">${d.date} · اليوم ${d.n}</span>
-      <h3>${d.title}</h3>
-      <div class="meta">🚐 ${d.km}</div>
-      <p class="desc">${d.desc}</p>
-      ${campSec}${sightsSec}
-      ${d.note?`<div class="note-inline">${d.note}</div>`:""}
-    </div>`;
-  overlay.classList.add("open");
-  document.body.style.overflow="hidden";
-}
-function nav(dir){
-  curIdx=(curIdx+dir+curImgs.length)%curImgs.length;
-  document.getElementById("cimg").src=curImgs[curIdx].u;
-  document.getElementById("cimg").alt=curImgs[curIdx].c;
-  document.getElementById("ccap").innerHTML=curImgs[curIdx].c+" · <small>صور خرائط Google</small>";
-}
-function closeModal(){overlay.classList.remove("open");document.body.style.overflow="";}
-overlay.addEventListener("click",e=>{if(e.target===overlay)closeModal();});
-document.addEventListener("keydown",e=>{
-  if(!overlay.classList.contains("open"))return;
-  if(e.key==="Escape")closeModal();
-  if(e.key==="ArrowLeft")nav(1);
-  if(e.key==="ArrowRight")nav(-1);
-});
-
-/* ===== معرض صور الكرفان ===== */
-const VAN_IMGS=[
-"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_CU_2025_1502_21-31-41_WEB.jpg/w=2560",
-"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T448_GP_2025_0001_21-31-41_WEB-1.jpg/w=2500,h=1250",
-"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T338_PI_2024_0105_21-31-41_WEB.jpg/w=2560,h=1810",
-"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_IT_2024_0020_20-31-41_WEB.jpg/w=2560,h=1708",
-"https://imagedelivery.net/g_elyS8seh1NDPGWNcqjZg/www.touringcars.com/2025/02/carado-imagebank-data_VE_Semi-Integrated_T447_CU_2025_1504_21-31-41_WEB.jpg/w=2560,h=1707"
+const map=L.map('map',{scrollWheelZoom:false}).setView([61.0,10.0],5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+const icon=(type,label)=>L.divIcon({className:'',html:`<div class="marker ${type}"><span>${label}</span></div>`,iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-27]});
+const points=[
+ {name:'ستوكهولم',lat:59.3293,lng:18.0686,type:'pass',label:'ب',note:'بداية ونهاية الرحلة'},
+ {name:'أوسلو',lat:59.9139,lng:10.7522,type:'sleep',label:'2',note:'ليلتان · Topcamp Bogstad'},
+ {name:'Vøringsfossen',lat:60.4266,lng:7.2518,type:'visit',label:'ش',note:'زيارة شلال في طريق فوس'},
+ {name:'Vossevangen',lat:60.6287,lng:6.4147,type:'sleep',label:'3',note:'3 ليالٍ · Voss Camping'},
+ {name:'Tvindefossen',lat:60.7269,lng:6.4932,type:'visit',label:'ش',note:'جولة يومية من فوس'},
+ {name:'Skjervsfossen',lat:60.5864,lng:6.6337,type:'visit',label:'ش',note:'جولة شلالات هاردانغر'},
+ {name:'Steinsdalsfossen',lat:60.3709,lng:6.1028,type:'visit',label:'ش',note:'يمكن المشي خلف الشلال'},
+ {name:'فلام',lat:60.8628,lng:7.1146,type:'pass',label:'م',note:'توقف في طريق سترين'},
+ {name:'Sogndal',lat:61.2296,lng:7.1003,type:'pass',label:'م',note:'مرور'},
+ {name:'سترين',lat:61.9045,lng:6.7226,type:'sleep',label:'4',note:'4 ليالٍ · Mindresunde Camping'},
+ {name:'Loen / Lovatnet',lat:61.8712,lng:6.8491,type:'visit',label:'ز',note:'جولة من سترين'},
+ {name:'Briksdal',lat:61.6658,lng:6.8794,type:'visit',label:'ز',note:'وادي بريكسدال'},
+ {name:'غيرانغر',lat:62.1015,lng:7.2059,type:'visit',label:'ز',note:'رحلة يوم كامل من سترين'},
+ {name:'لوم',lat:61.8377,lng:8.5684,type:'pass',label:'م',note:'توقف في طريق العودة'},
+ {name:'ليلهامر',lat:61.1153,lng:10.4662,type:'sleep',label:'1',note:'ليلة عودة · Lillehammer Turistsenter'},
+ {name:'Kongsvinger',lat:60.1905,lng:12.0038,type:'pass',label:'م',note:'مرور في اليوم الأخير'},
+ {name:'أوربرو',lat:59.2753,lng:15.2134,type:'pass',label:'م',note:'استراحة في طريق ستوكهولم'}
 ];
-(function(){
-  const main=document.getElementById("vanMain");
-  const thumbs=document.getElementById("vanThumbs");
-  if(!main||!thumbs)return;
-  VAN_IMGS.forEach((u,i)=>{
-    const t=document.createElement("img");
-    t.src=u;t.alt="صورة الكرفان "+(i+1);t.loading="lazy";
-    if(i===0)t.classList.add("active");
-    t.addEventListener("click",()=>{
-      main.src=u;
-      [...thumbs.children].forEach(c=>c.classList&&c.classList.remove("active"));
-      t.classList.add("active");
-    });
-    thumbs.appendChild(t);
-  });
-})();
+points.forEach(p=>L.marker([p.lat,p.lng],{icon:icon(p.type,p.label)}).addTo(map).bindPopup(`<b>${p.name}</b><br>${p.note}<br><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q(p.name)}">خرائط Google</a>`));
+const mainRoute=[[59.3293,18.0686],[59.9139,10.7522],[60.4266,7.2518],[60.6287,6.4147],[60.8628,7.1146],[61.2296,7.1003],[61.9045,6.7226],[61.8377,8.5684],[61.1153,10.4662],[60.1905,12.0038],[59.2753,15.2134],[59.3293,18.0686]];
+const vossLoop=[[60.6287,6.4147],[60.7269,6.4932],[60.6287,6.4147],[60.5864,6.6337],[60.3709,6.1028],[60.6287,6.4147]];
+const strynLoop=[[61.9045,6.7226],[61.8712,6.8491],[61.6658,6.8794],[61.9045,6.7226],[62.1015,7.2059],[61.9045,6.7226]];
+L.polyline(mainRoute,{color:'#245b64',weight:4,opacity:.85}).addTo(map);
+L.polyline(vossLoop,{color:'#bc6c34',weight:3,dashArray:'7 7',opacity:.9}).addTo(map);
+L.polyline(strynLoop,{color:'#bc6c34',weight:3,dashArray:'7 7',opacity:.9}).addTo(map);
+map.fitBounds(L.latLngBounds(points.map(p=>[p.lat,p.lng])),{padding:[28,28]});
 </script>
 </body>
 </html>
