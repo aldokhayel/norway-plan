@@ -1,0 +1,1448 @@
+{
+  "updated": "2026-09-05",
+  "people": 3,
+  "camps": [
+    {
+      "id": "mora",
+      "name": "First Camp Moraparken",
+      "xy": [
+        61.009,
+        14.536
+      ],
+      "web": "https://firstcamp.se/destinationer/moraparken-dalarna",
+      "rating": 4.2,
+      "count": null,
+      "ratingSource": "https://www.google.com/maps/search/Mora%20Parken%20parkv%C3%A4gen%201%20Mora",
+      "price": [
+        350,
+        550
+      ],
+      "currency": "SEK",
+      "view": "ضفاف نهر Österdalälven قرب بحيرة Siljan",
+      "services": "كهرباء · مرافق صحية · مطبخ · مشي إلى متاجر ومقاهي مورا",
+      "season": "مفتوح طوال العام؛ أكّد استقبال 19 سبتمبر مع المخيم",
+      "seasonSource": "https://firstcamp.se/destinationer/moraparken-dalarna",
+      "tradeoff": "",
+      "image": "https://firstcamp.fra1.digitaloceanspaces.com/cms-public/2024/08/12892092_3-328-16_photo_web-moraparken.jpg",
+      "imageSource": "https://firstcamp.se/destinationer/moraparken-dalarna"
+    },
+    {
+      "id": "mjelva",
+      "name": "Mjelva Camping & Hytter",
+      "xy": [
+        62.546,
+        7.714
+      ],
+      "web": "https://mjelvacamping.no/nb/",
+      "rating": 4.6,
+      "count": null,
+      "ratingSource": "https://www.google.com/travel/hotels/landingpage/%C3%A5ndalsnes-hotels",
+      "price": [
+        350,
+        550
+      ],
+      "currency": "NOK",
+      "view": "جبال Romsdalen تحيط بالمخيم",
+      "services": "كهرباء · مرافق صحية · Åndalsnes نحو 3 كم للخدمات",
+      "season": "الموسم المدرج حتى 30 سبتمبر؛ رتّب وصولًا متأخرًا يوم 20",
+      "seasonSource": "https://nafcamp.no/campingplass/mjelva-camping-og-hytter/",
+      "tradeoff": "",
+      "image": "https://mjelvacamping.no/images/grafisk/mjelvacamping_topp2.jpg",
+      "imageSource": "https://mjelvacamping.no/nb/"
+    },
+    {
+      "id": "geiranger",
+      "name": "Geiranger Camping",
+      "xy": [
+        62.101,
+        7.207
+      ],
+      "web": "https://www.geirangercamping.no/",
+      "rating": 4.3,
+      "count": 2412,
+      "ratingSource": "https://wanderlog.com/place/details/100123/",
+      "price": [
+        450,
+        450
+      ],
+      "currency": "NOK",
+      "view": "إطلالة مباشرة على Geirangerfjord في قلب القرية",
+      "services": "كهرباء · تفريغ · مرافق صحية · بقالة ومطاعم ومرفأ سيرًا",
+      "season": "الموقع يذكر 27 أبريل–11 أكتوبر؛ لا يقبل حجز المواقع مسبقًا",
+      "seasonSource": "https://www.geirangercamping.no/GCnorskkontakt.html",
+      "tradeoff": "اطلب الصف المطل على الماء؛ الإطلالة تعتمد على الموقع المتاح. الدش إضافي.",
+      "image": "https://www.geirangercamping.no/frontbild.jpg",
+      "imageSource": "https://www.geirangercamping.no/",
+      "priceSource": "https://www.geirangercamping.no/GCpris2D.HTML"
+    },
+    {
+      "id": "gryta",
+      "name": "Gryta Camping",
+      "xy": [
+        61.742,
+        6.807
+      ],
+      "web": "https://www.gryta.no/",
+      "rating": 4.7,
+      "count": 1163,
+      "ratingSource": "https://wanderlog.com/place/details/489217/gryta-camping",
+      "price": [
+        400,
+        600
+      ],
+      "currency": "NOK",
+      "view": "بحيرة Oldevatnet والجبال والجليد؛ أجمل ليلة طبيعية في الخطة",
+      "services": "كهرباء · مرافق صحية · قوارب/كاياك حسب الطقس · أولدن نحو 13 كم للتسوق",
+      "season": "حوالي 1 مايو–1 أكتوبر؛ احجز 22 سبتمبر",
+      "seasonSource": "https://www.gryta.no/booking",
+      "tradeoff": "اشتروا المؤن في أولدن قبل دخول الوادي؛ المخيم ليس في وسط قرية خدمات.",
+      "image": "https://lirp.cdn-website.com/24d0ca0c/dms3rep/multi/opt/PostkortGrytacamping2023-1920w.jpg",
+      "imageSource": "https://www.gryta.no/"
+    },
+    {
+      "id": "laerdal",
+      "name": "Lærdal Ferie- og Fritidspark",
+      "xy": [
+        61.101,
+        7.473
+      ],
+      "web": "https://www.laerdalferiepark.com/en/",
+      "rating": 4.1,
+      "count": 1775,
+      "ratingSource": "https://www.google.no/travel/hotels/entity/ChgIrM-e8OGS993tARoLL2cvMXRkejdfZncQAQ",
+      "price": [
+        400,
+        600
+      ],
+      "currency": "NOK",
+      "view": "شاطئ Sognefjord قرب البلدة الخشبية القديمة",
+      "services": "كهرباء · خدمات كرفان · غسيل · بقالة وبلدة قديمة قريبًا",
+      "season": "الحجز الرسمي متاح؛ ثبّت موقع الكرفان وخدمات 23 سبتمبر",
+      "seasonSource": "https://www.laerdalferiepark.com/en/welcome/opening-times-contact-info",
+      "tradeoff": "اختيار عملي على المسار؛ تقييمه أقل من Gryta وMjelva.",
+      "image": "https://www.laerdalferiepark.com/images/menu/LFFoverviewphoto1.jpg",
+      "imageSource": "https://www.laerdalferiepark.com/en/"
+    },
+    {
+      "id": "flam",
+      "name": "Flåm Camping & Hostel",
+      "xy": [
+        60.86,
+        7.111
+      ],
+      "web": "https://www.flaam-camping.no/",
+      "rating": 4.3,
+      "count": 2315,
+      "ratingSource": "https://wanderlog.com/es/place/details/103630/fl%C3%A5m-camping-og-vandrarheim",
+      "price": [
+        570,
+        750
+      ],
+      "currency": "NOK",
+      "view": "مدرجات خضراء تحت الجبال قرب محطة القطار والمرفأ",
+      "services": "كهرباء · مطبخ ومرافق جديدة · تفريغ مياه · خدمات القرية على بعد نحو 300 م",
+      "season": "دليل Campio يدرج موسمًا طوال العام؛ أكد موقع 24 سبتمبر",
+      "seasonSource": "https://campio.no/nb/campsite/flam-camping-og-vandrarheim",
+      "tradeoff": "السعر الرسمي يبدأ من 570 NOK؛ إجمالي 3 بالغين والكهرباء يحتاج عرض حجز. ليست كل المواقع مطلة على الفيورد.",
+      "image": "https://www.flaam-camping.no/wp-content/uploads/2020/01/slide2.jpg",
+      "imageSource": "https://www.flaam-camping.no/",
+      "priceSource": "https://www.flaam-camping.no/"
+    },
+    {
+      "id": "saebo",
+      "name": "Sæbø Camping",
+      "xy": [
+        60.456,
+        7.098
+      ],
+      "web": "https://saebocamping.com/",
+      "rating": 4.0,
+      "count": 1114,
+      "ratingSource": "https://www.google.com/travel/hotels/entity/ChcIvJCL9rqqjLFRGgsvZy8xdHYzbTg0dBAB",
+      "price": [
+        350,
+        550
+      ],
+      "currency": "NOK",
+      "view": "بحيرة Eidfjordvatnet بين جدران الجبال",
+      "services": "كهرباء · تفريغ · مطبخ · قوارب للإيجار · خدمات Øvre Eidfjord",
+      "season": "دليل Campio: 1 أبريل–2 أكتوبر؛ تواصل لتأكيد 25 سبتمبر",
+      "seasonSource": "https://campio.no/nb/campsite/saebo-camping",
+      "tradeoff": "إطلالة ممتازة ومرافق أبسط؛ 4.0/5، وليس من المخيمات الأعلى تقييمًا. الدش والمطبخ قد يكونان برسوم.",
+      "image": "https://admin.mekke.no/thumbs/a21/90e85201100c6ce8aacd9e828dc65.jpg?img=data%2Fimages%2F2952%2Fheaderbilde1-1.jpg&minw=0&minh=0&h=1400&format=jpg",
+      "imageSource": "https://saebocamping.com/"
+    },
+    {
+      "id": "oslo",
+      "name": "Topcamp Bogstad",
+      "xy": [
+        59.9625,
+        10.6421
+      ],
+      "web": "https://topcamp.no/topcamp-bogstad",
+      "rating": 3.8,
+      "count": null,
+      "ratingSource": "https://www.top-rated.online/cities/Oslo/place/p/1774789/Topcamp%2BBogstad",
+      "price": [
+        650,
+        950
+      ],
+      "currency": "NOK",
+      "view": "قرب بحيرة Bogstadvannet والغابة على أطراف أوسلو",
+      "services": "كهرباء · تفريغ وغسيل · بقالة · نقل عام للمركز",
+      "season": "مفتوح طوال العام؛ أكد موقفًا لـ26 سبتمبر",
+      "seasonSource": "https://topcamp.no/topcamp-bogstad",
+      "tradeoff": "تنازل مقصود لسهولة زيارة أوسلو: 3.8/5، ولا أصفه بأنه مخيم عالي التقييم.",
+      "image": "https://topcamp.no/imager/damfiles/seoimage-3/20240108044618/128029/bogstad_resepsjon_innkjorsel_101d7b8599c0cc599ee16e9637ccc19e.jpg",
+      "imageSource": "https://topcamp.no/topcamp-bogstad"
+    },
+    {
+      "id": "bomstad",
+      "name": "Bomstadbaden Camping",
+      "xy": [
+        59.367,
+        13.352
+      ],
+      "web": "https://bomstadbaden.se/",
+      "rating": 4.4,
+      "count": 1588,
+      "ratingSource": "https://www.newsworthy.se/artikel/425280/bra-betyg-f%C3%B6r-mest-omtyckta-campingen-i-karlstad",
+      "price": [
+        350,
+        550
+      ],
+      "currency": "SEK",
+      "view": "شاطئ بحيرة Vänern وسط الأشجار",
+      "services": "كهرباء · خدمات كرفان · ممشى الشاطئ · خدمات كارلستاد بالسيارة",
+      "season": "مفتوح طوال العام؛ الأنشطة والمطعم موسميان",
+      "seasonSource": "https://bomstadbaden.se/aktivitet/aret-runt-pa-bomstadbaden/",
+      "tradeoff": "التقييم المنقول عن Google منشور 9 يونيو 2026؛ ليست كل الأنشطة الصيفية متاحة آخر سبتمبر.",
+      "image": "https://images.citybreakcdn.com/image.aspx?ImageId=14766593&crop=1&fitaspect=1&height=490&scale=downscaleonly&width=1116",
+      "imageSource": "https://camping.se/en/camping/2949/Bomstadbaden-Karlstad-Swecamp"
+    },
+    {
+      "id": "bredang",
+      "name": "Bredäng Camping Stockholm",
+      "xy": [
+        59.303,
+        17.923
+      ],
+      "web": "https://bredangcamping.se/",
+      "rating": 4.0,
+      "count": 1951,
+      "ratingSource": "https://wanderlog.com/place/details/4015363/bred%C3%A4ng-camping-stockholm",
+      "price": [
+        400,
+        600
+      ],
+      "currency": "SEK",
+      "view": "غابة قرب Mälaren؛ الشاطئ على بعد 350 م",
+      "services": "كهرباء · مرافق صحية · مطعم · بقالة · المترو على بعد 700 م",
+      "season": "أكد تشغيل الكرفان وخدمات التفريغ في 28–29 سبتمبر مباشرة",
+      "seasonSource": "https://bredangcamping.se/",
+      "tradeoff": "مخيم حضري عملي، لا يضمن إطلالة بحيرة من الموقف. يلزم تأكيد ليلة 28 سبتمبر قبل اعتماد الحجز.",
+      "image": "https://bredang.annonsmediavast.se/wp-content/uploads/2025/02/bredng-camping-stockholm-2-1024x576-2.jpg",
+      "imageSource": "https://bredangcamping.se/"
+    }
+  ],
+  "points": {
+    "mora": {
+      "name": "First Camp Moraparken",
+      "xy": [
+        61.009,
+        14.536
+      ]
+    },
+    "mjelva": {
+      "name": "Mjelva Camping & Hytter",
+      "xy": [
+        62.546,
+        7.714
+      ]
+    },
+    "geiranger": {
+      "name": "Geiranger Camping",
+      "xy": [
+        62.101,
+        7.207
+      ]
+    },
+    "gryta": {
+      "name": "Gryta Camping",
+      "xy": [
+        61.742,
+        6.807
+      ]
+    },
+    "laerdal": {
+      "name": "Lærdal Ferie- og Fritidspark",
+      "xy": [
+        61.101,
+        7.473
+      ]
+    },
+    "flam": {
+      "name": "Flåm Camping & Hostel",
+      "xy": [
+        60.86,
+        7.111
+      ]
+    },
+    "saebo": {
+      "name": "Sæbø Camping",
+      "xy": [
+        60.456,
+        7.098
+      ]
+    },
+    "oslo": {
+      "name": "Topcamp Bogstad",
+      "xy": [
+        59.9625,
+        10.6421
+      ]
+    },
+    "bomstad": {
+      "name": "Bomstadbaden Camping",
+      "xy": [
+        59.367,
+        13.352
+      ]
+    },
+    "bredang": {
+      "name": "Bredäng Camping Stockholm",
+      "xy": [
+        59.303,
+        17.923
+      ]
+    },
+    "depot": {
+      "name": "Touring Cars · Bristagatan 12",
+      "xy": [
+        59.616,
+        17.865
+      ]
+    },
+    "airport": {
+      "name": "Stockholm Arlanda (ARN)",
+      "xy": [
+        59.6498,
+        17.9238
+      ]
+    },
+    "sala": {
+      "name": "Sala",
+      "xy": [
+        59.919,
+        16.605
+      ]
+    },
+    "borlange": {
+      "name": "Borlänge",
+      "xy": [
+        60.485,
+        15.437
+      ]
+    },
+    "trysil": {
+      "name": "Trysil",
+      "xy": [
+        61.313,
+        12.263
+      ]
+    },
+    "elverum": {
+      "name": "Elverum",
+      "xy": [
+        60.882,
+        11.562
+      ]
+    },
+    "lille": {
+      "name": "Lillehammer",
+      "xy": [
+        61.116,
+        10.466
+      ]
+    },
+    "dombas": {
+      "name": "Dombås",
+      "xy": [
+        62.075,
+        9.123
+      ]
+    },
+    "trollwall": {
+      "name": "Trollveggen viewpoint",
+      "xy": [
+        62.49,
+        7.763
+      ]
+    },
+    "gondola": {
+      "name": "Romsdalsgondolen",
+      "xy": [
+        62.565,
+        7.689
+      ]
+    },
+    "sjoholt": {
+      "name": "Sjøholt · E136 / Rv650",
+      "xy": [
+        62.482,
+        6.812
+      ]
+    },
+    "valldal": {
+      "name": "Valldal",
+      "xy": [
+        62.299,
+        7.262
+      ]
+    },
+    "linge": {
+      "name": "Linge ferry quay",
+      "xy": [
+        62.291,
+        7.186
+      ]
+    },
+    "eidsdal": {
+      "name": "Eidsdal ferry quay",
+      "xy": [
+        62.263,
+        7.173
+      ]
+    },
+    "eagle": {
+      "name": "Ørnesvingen",
+      "xy": [
+        62.126,
+        7.167
+      ]
+    },
+    "hellesylt": {
+      "name": "Hellesylt ferry & waterfall",
+      "xy": [
+        62.085,
+        6.875
+      ]
+    },
+    "loen": {
+      "name": "Loen Skylift",
+      "xy": [
+        61.871,
+        6.848
+      ]
+    },
+    "lovatnet": {
+      "name": "Lovatnet · northern shore",
+      "xy": [
+        61.845,
+        6.887
+      ]
+    },
+    "olden": {
+      "name": "Olden",
+      "xy": [
+        61.836,
+        6.807
+      ]
+    },
+    "briksdal": {
+      "name": "Briksdal trail parking",
+      "xy": [
+        61.665,
+        6.82
+      ]
+    },
+    "skei": {
+      "name": "Skei",
+      "xy": [
+        61.571,
+        6.48
+      ]
+    },
+    "sogndal": {
+      "name": "Sogndal",
+      "xy": [
+        61.229,
+        7.1
+      ]
+    },
+    "mannheller": {
+      "name": "Mannheller ferry quay",
+      "xy": [
+        61.162,
+        7.339
+      ]
+    },
+    "fodnes": {
+      "name": "Fodnes ferry quay",
+      "xy": [
+        61.151,
+        7.396
+      ]
+    },
+    "oldtown": {
+      "name": "Gamle Lærdalsøyri",
+      "xy": [
+        61.099,
+        7.484
+      ]
+    },
+    "aurland": {
+      "name": "Aurlandsvangen",
+      "xy": [
+        60.908,
+        7.188
+      ]
+    },
+    "flamquay": {
+      "name": "Flåm quay & station",
+      "xy": [
+        60.863,
+        7.115
+      ]
+    },
+    "gudvangen": {
+      "name": "Gudvangen quay",
+      "xy": [
+        60.878,
+        6.842
+      ]
+    },
+    "myrdal": {
+      "name": "Myrdal railway station",
+      "xy": [
+        60.736,
+        7.122
+      ]
+    },
+    "kjos": {
+      "name": "Kjosfossen",
+      "xy": [
+        60.746,
+        7.137
+      ]
+    },
+    "tvinde": {
+      "name": "Tvindefossen",
+      "xy": [
+        60.727,
+        6.487
+      ]
+    },
+    "voss": {
+      "name": "Vossevangen",
+      "xy": [
+        60.63,
+        6.413
+      ]
+    },
+    "steinsdal": {
+      "name": "Steinsdalsfossen",
+      "xy": [
+        60.371,
+        6.102
+      ]
+    },
+    "norheimsund": {
+      "name": "Norheimsund",
+      "xy": [
+        60.37,
+        6.145
+      ]
+    },
+    "granvin": {
+      "name": "Granvin",
+      "xy": [
+        60.525,
+        6.721
+      ]
+    },
+    "eidfjord": {
+      "name": "Eidfjord",
+      "xy": [
+        60.467,
+        7.07
+      ]
+    },
+    "voring": {
+      "name": "Vøringsfossen · Fossli parking",
+      "xy": [
+        60.427,
+        7.25
+      ]
+    },
+    "geilo": {
+      "name": "Geilo",
+      "xy": [
+        60.535,
+        8.207
+      ]
+    },
+    "honefoss": {
+      "name": "Hønefoss",
+      "xy": [
+        60.169,
+        10.256
+      ]
+    },
+    "opera": {
+      "name": "Oslo Opera House",
+      "xy": [
+        59.907,
+        10.753
+      ]
+    },
+    "aker": {
+      "name": "Aker Brygge",
+      "xy": [
+        59.91,
+        10.726
+      ]
+    },
+    "vigeland": {
+      "name": "Vigeland Park",
+      "xy": [
+        59.927,
+        10.7
+      ]
+    },
+    "karlstad": {
+      "name": "Karlstad",
+      "xy": [
+        59.38,
+        13.503
+      ]
+    },
+    "orebro": {
+      "name": "Örebro",
+      "xy": [
+        59.275,
+        15.213
+      ]
+    },
+    "gamla": {
+      "name": "Gamla Stan",
+      "xy": [
+        59.325,
+        18.071
+      ]
+    },
+    "cityhall": {
+      "name": "Stockholm City Hall",
+      "xy": [
+        59.327,
+        18.055
+      ]
+    }
+  },
+  "days": [
+    {
+      "n": 1,
+      "date": "2026-09-19",
+      "title": "الوصول إلى السويد · ليلة على النهر",
+      "phase": "وصول",
+      "camp": "mora",
+      "km": 310,
+      "drive": "4–4.5 س",
+      "hours": "08:00–19:00",
+      "desc": "هبوط 08:00، واستلام الكرفان 11:00 حسب رابطك. يوم أول خفيف بعد الرحلة؛ نؤجل ستوكهولم لنهاية السفر.",
+      "stops": [
+        "depot",
+        "sala",
+        "borlange",
+        "mora"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "depot",
+            "sala",
+            "borlange",
+            "mora"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:00–10:30",
+          "text": "هبوط وأمتعة وانتقال من المطار إلى Touring Cars؛ رتّب خدمة النقل."
+        },
+        {
+          "time": "11:00–12:30",
+          "text": "استلام الكرفان، شرح التشغيل، توثيق حالته وتسجيل السائقين."
+        },
+        {
+          "time": "12:30–18:00",
+          "text": "مشتريات أولية ثم القيادة إلى مورا مع استراحة قصيرة."
+        },
+        {
+          "time": "18:00–19:00",
+          "text": "المخيم ومشية خفيفة على النهر؛ نوم مبكر."
+        }
+      ],
+      "costs": [
+        "المشي مجاني؛ خصصوا 800–1,200 SEK لمؤن البداية، ضمن ميزانية الطعام لا فوقها."
+      ],
+      "notes": [
+        "الاستلام 11:00 مستنتج من رابط البحث وليس تأكيد حجز. تأخر الاستلام عن 14:00 يستدعي تقصير مرحلة اليوم التالي."
+      ],
+      "imageKey": "stockholm",
+      "optional": null
+    },
+    {
+      "n": 2,
+      "date": "2026-09-20",
+      "title": "نحو Romsdalen · يوم العبور الطويل",
+      "phase": "١ · الشمال الغربي",
+      "camp": "mjelva",
+      "km": 580,
+      "drive": "9.5–10.5 س",
+      "hours": "08:00–20:00",
+      "desc": "يوم انتقال واحد طويل للوصول إلى جبال الشمال الغربي. لا نحشر معه تلفريكًا أو رحلة قطار. الطريق عبر Trysil ثم Elverum وLillehammer وDombås.",
+      "stops": [
+        "mora",
+        "trysil",
+        "elverum",
+        "lille",
+        "dombas",
+        "trollwall",
+        "mjelva"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "mora",
+            "trysil",
+            "elverum",
+            "lille",
+            "dombas",
+            "trollwall",
+            "mjelva"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:00–12:30",
+          "text": "القيادة عبر Trysil إلى Elverum مع استراحة 20 دقيقة."
+        },
+        {
+          "time": "12:30–13:10",
+          "text": "غداء واستراحة للسائقين."
+        },
+        {
+          "time": "13:10–18:00",
+          "text": "متابعة E6 نحو Dombås، واستراحة ثانية عند الحاجة."
+        },
+        {
+          "time": "18:00–20:00",
+          "text": "E136 عبر Romsdalen؛ توقف تصوير سريع فقط إن وصلتم مبكرًا، ثم Mjelva."
+        }
+      ],
+      "costs": [
+        "الطريق والمشاهد بلا تذاكر؛ رسوم المرور والوقود محسوبة في الميزانية العامة."
+      ],
+      "notes": [
+        "OSRM قدّر نحو 578 كم و9.3 ساعات لسيارة عادية في فحص 5 سبتمبر؛ خُصص حتى 12 ساعة مع استراحات وهامش الكرفان.",
+        "رتّب وصول المخيم المتأخر. إذا ظهر وصول بعد 20:00 أو تعب السائق: توقف في Dombås، وألغِ تلفريك صباح الغد لتعويض المسافة."
+      ],
+      "imageKey": null,
+      "optional": null
+    },
+    {
+      "n": 3,
+      "date": "2026-09-21",
+      "title": "قمم Åndalsnes · قرية غيرانغر",
+      "phase": "١ · الشمال الغربي",
+      "camp": "geiranger",
+      "km": 160,
+      "drive": "4–5 س + عبّارة",
+      "hours": "09:00–19:00",
+      "desc": "صباح جبلي ثم طريق إلى غيرانغر عبر Sjøholt وValldal. نتجنب جعل Trollstigen شرطًا لإكمال المسار.",
+      "stops": [
+        "mjelva",
+        "gondola",
+        "sjoholt",
+        "valldal",
+        "linge",
+        "eidsdal",
+        "eagle",
+        "geiranger"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "mjelva",
+            "gondola",
+            "sjoholt",
+            "valldal",
+            "linge"
+          ]
+        },
+        {
+          "mode": "ferry",
+          "points": [
+            "linge",
+            "eidsdal"
+          ]
+        },
+        {
+          "mode": "road",
+          "points": [
+            "eidsdal",
+            "eagle",
+            "geiranger"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "09:00–10:30",
+          "text": "تلفريك Romsdalsgondolen إذا كانت الرؤية صافية والتشغيل متاحًا؛ وإلا مشية في Åndalsnes."
+        },
+        {
+          "time": "10:30–13:00",
+          "text": "القيادة عبر Sjøholt، غداء قصير في Valldal."
+        },
+        {
+          "time": "13:00–16:30",
+          "text": "عبّارة Linge–Eidsdal ثم مطل Ørnesvingen والوصول إلى مخيم غيرانغر."
+        },
+        {
+          "time": "16:30–19:00",
+          "text": "المشي بمحاذاة شلال القرية Storfossen والمرفأ، ثم عشاء."
+        }
+      ],
+      "costs": [
+        "Romsdalsgondolen: احتياط 600–800 NOK للفرد ذهابًا وعودة؛ 1,800–2,400 للثلاثة. اختياري.",
+        "Linge–Eidsdal: احتياط 150–350 NOK للكرفان والمجموعة؛ السعر يعتمد على المركبة/الفئة.",
+        "Geiranger Camping: 450 NOK للموقع + 3 بالغين + كهرباء وفق تعرفة سبتمبر 2026؛ الدش إضافي."
+      ],
+      "notes": [
+        "مخيم غيرانغر لا يقبل حجز موقع مسبقًا؛ الوصول عصرًا أفضل. البديل: Grande Hytteutleige og Camping بعد تأكيد افتتاحه.",
+        "مسار Rv63 نحو غيرانغر متعرج أيضًا؛ افحص الطقس وحالة الطريق صباحًا."
+      ],
+      "imageKey": "geiranger",
+      "optional": null
+    },
+    {
+      "n": 4,
+      "date": "2026-09-22",
+      "title": "عبّارة الفيورد · لوين والبحيرات",
+      "phase": "١ · الشمال الغربي",
+      "camp": "gryta",
+      "km": 100,
+      "drive": "2.5–3.5 س + عبّارة",
+      "hours": "09:00–19:30",
+      "desc": "عبّارة غيرانغر إلى هيلسيولت تنقل الكرفان بين شلالات الفيورد. ثم لوين والبحيرة، والمبيت مباشرة عند Oldevatnet.",
+      "stops": [
+        "geiranger",
+        "hellesylt",
+        "loen",
+        "lovatnet",
+        "olden",
+        "gryta"
+      ],
+      "segments": [
+        {
+          "mode": "ferry",
+          "points": [
+            "geiranger",
+            "hellesylt"
+          ]
+        },
+        {
+          "mode": "road",
+          "points": [
+            "hellesylt",
+            "loen",
+            "lovatnet",
+            "olden",
+            "gryta"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "09:00–11:00",
+          "text": "وقت مخصص لتسجيل العبّارة والإبحار إلى Hellesylt؛ اختر رحلة مؤكدة ضمن هذه الفترة."
+        },
+        {
+          "time": "11:00–12:00",
+          "text": "شلال Hellesyltfossen والقهوة في القرية."
+        },
+        {
+          "time": "12:00–16:30",
+          "text": "القيادة إلى Loen، غداء ثم Loen Skylift أو بحيرة Lovatnet حسب السحب."
+        },
+        {
+          "time": "16:30–19:30",
+          "text": "المؤن من Olden ثم Gryta؛ استرخاء عند Oldevatnet وقارب قصير إن سمح الطقس."
+        }
+      ],
+      "costs": [
+        "عبّارة Geiranger–Hellesylt: احتياط 1,500–2,500 NOK إجماليًا للكرفان و3 بالغين؛ يحتاج تسعير طول المركبة الفعلي.",
+        "Loen Skylift: احتياط 650–850 NOK للفرد ذهابًا وعودة؛ 1,950–2,550 للثلاثة، اختياري.",
+        "قوارب Gryta: اسأل عن الإعارة المشمولة وشروطها؛ لا تفترض التوفر أو الهدوء."
+      ],
+      "notes": [
+        "اختر تلفريكًا واحدًا فقط بين Åndalsnes وLoen لتوفير التكلفة؛ أو كليهما إذا اختلفت الرؤية وكانت الميزانية مريحة.",
+        "إذا ألغيت العبّارة: الطريق عبر Rv63–Rv15–Stryn يحتاج نحو 3.5–4.5 ساعات؛ احذف التلفريك والمشاوير الإضافية."
+      ],
+      "imageKey": "lovatnet",
+      "optional": null
+    },
+    {
+      "n": 5,
+      "date": "2026-09-23",
+      "title": "بريكسدال · جنوبًا إلى Sognefjord",
+      "phase": "١ · الشمال ثم الانتقال",
+      "camp": "laerdal",
+      "km": 195,
+      "drive": "4.5–5.5 س + عبّارة",
+      "hours": "08:30–19:00",
+      "desc": "صباح للجليد والشلالات في وادي Briksdal، ثم انتقال باتجاه واحد عبر Skei وSogndal إلى Lærdal القديمة.",
+      "stops": [
+        "gryta",
+        "briksdal",
+        "olden",
+        "skei",
+        "sogndal",
+        "mannheller",
+        "fodnes",
+        "laerdal",
+        "oldtown"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "gryta",
+            "briksdal",
+            "olden",
+            "skei",
+            "sogndal",
+            "mannheller"
+          ]
+        },
+        {
+          "mode": "ferry",
+          "points": [
+            "mannheller",
+            "fodnes"
+          ]
+        },
+        {
+          "mode": "road",
+          "points": [
+            "fodnes",
+            "laerdal"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:30–11:00",
+          "text": "Briksdal: امشِ من المواقف إلى البحيرة أمام الجليد عبر شلال Kleivafossen، ثم العودة."
+        },
+        {
+          "time": "11:00–12:00",
+          "text": "قيادة للخروج من الوادي، وغداء مبكر."
+        },
+        {
+          "time": "12:00–17:30",
+          "text": "جنوبًا عبر Skei وSogndal وعبّارة Mannheller–Fodnes إلى Lærdal."
+        },
+        {
+          "time": "17:30–19:00",
+          "text": "المخيم والبلدة الخشبية القديمة على الأقدام."
+        }
+      ],
+      "costs": [
+        "المشي إلى Briksdal مجاني؛ احتياط المواقف 100–200 NOK للمركبة.",
+        "Troll Car بدل جزء من المشي: 300–450 NOK للفرد تقديريًا، 900–1,350 للثلاثة؛ نشاط اختياري حسب التشغيل.",
+        "Mannheller–Fodnes: احتياط 150–350 NOK للمركبة والمجموعة."
+      ],
+      "notes": [
+        "الرجوع على طريق وادي Briksdal استثناء ضروري لأنه طريق مسدود؛ لا توجد جولة دائرية بالسيارة.",
+        "لا تقترب من حافة الجليد؛ التزم بالممرات المفتوحة. إذا تأخر الصباح، اختصر جولة البلدة."
+      ],
+      "imageKey": "briksdal",
+      "optional": null
+    },
+    {
+      "n": 6,
+      "date": "2026-09-24",
+      "title": "فلام · قارب بين الفيوردات وقطار الشلالات",
+      "phase": "٢ · الفيوردات الجنوبية",
+      "camp": "flam",
+      "km": 45,
+      "drive": "حوالي 1 س",
+      "hours": "08:00–18:30",
+      "desc": "اتركوا الكرفان في فلام طوال الأنشطة. حزمة القارب والحافلة والقطار تجعل اليوم ممتعًا دون قيادة إضافية.",
+      "stops": [
+        "laerdal",
+        "aurland",
+        "flamquay",
+        "gudvangen",
+        "myrdal",
+        "kjos",
+        "flam"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "laerdal",
+            "aurland",
+            "flam"
+          ]
+        },
+        {
+          "mode": "boat",
+          "points": [
+            "flamquay",
+            "aurland",
+            "gudvangen"
+          ]
+        },
+        {
+          "mode": "bus",
+          "points": [
+            "gudvangen",
+            "flamquay"
+          ]
+        },
+        {
+          "mode": "train",
+          "points": [
+            "flamquay",
+            "kjos",
+            "myrdal",
+            "flamquay"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:00–09:00",
+          "text": "القيادة عبر نفق Lærdal إلى فلام؛ موقف نهاري قانوني أو دخول مبكر بموافقة المخيم."
+        },
+        {
+          "time": "09:30–11:30",
+          "text": "رحلة Nærøyfjord من Flåm إلى Gudvangen؛ وقت منشور رسميًا لموسم سبتمبر 2026."
+        },
+        {
+          "time": "11:45–13:00",
+          "text": "الحافلة المحجوزة إلى فلام ثم غداء قرب المحطة."
+        },
+        {
+          "time": "13:30–16:00",
+          "text": "Flåmsbana إلى Myrdal والعودة، مع وقفة Kjosfossen؛ ثبّت قطار العودة ضمن الحجز."
+        },
+        {
+          "time": "16:00–18:30",
+          "text": "تسجيل المخيم، جولة قرية قصيرة وعشاء هادئ."
+        }
+      ],
+      "costs": [
+        "قطار Flåm ذهاب وعودة: 800–1,000 NOK للفرد؛ 2,400–3,000 للثلاثة، تقديري.",
+        "قارب Nærøyfjord + حافلة العودة: 800–1,100 NOK للفرد؛ 2,400–3,300 للثلاثة، تقديري.",
+        "إجمالي النشاطين: 4,800–6,300 NOK للثلاثة؛ قارن بسعر الحزمة الرسمية قبل الدفع.",
+        "موقف نهاري إن لم يسمح المخيم بالدخول المبكر: احتياط 150–300 NOK."
+      ],
+      "notes": [
+        "القارب سياحي للركاب فقط، والقطار لا يحمل الكرفان. حجز حافلة العودة ضروري لاستعادته.",
+        "المصدر الرسمي يجمع 09:30 قاربًا وحافلة 11:45 أو لاحقًا وقطار 13:30 أو لاحقًا؛ المقاعد الفعلية غير محجوزة.",
+        "التكرار هنا بالقطار والحافلة مقصود لتنفيذ الأنشطة، ثم يخرج الكرفان جنوبًا في اليوم التالي."
+      ],
+      "imageKey": "flam",
+      "optional": null
+    },
+    {
+      "n": 7,
+      "date": "2026-09-25",
+      "title": "فوس وهاردانغر · يوم الشلالات",
+      "phase": "٢ · الفيوردات الجنوبية",
+      "camp": "saebo",
+      "km": 240,
+      "drive": "4.5–5.5 س",
+      "hours": "09:00–19:00",
+      "desc": "من فلام عبر Gudvangen إلى Tvindefossen وفوس، ثم Norheimsund والمشي خلف شلال Steinsdalsfossen. نكمل على ساحل الفيورد إلى Eidfjord.",
+      "stops": [
+        "flam",
+        "gudvangen",
+        "tvinde",
+        "voss",
+        "steinsdal",
+        "norheimsund",
+        "granvin",
+        "eidfjord",
+        "saebo"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "flam",
+            "gudvangen",
+            "tvinde",
+            "voss",
+            "steinsdal",
+            "norheimsund",
+            "granvin",
+            "eidfjord",
+            "saebo"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "09:00–11:00",
+          "text": "القيادة وتوقف 30–40 دقيقة عند Tvindefossen."
+        },
+        {
+          "time": "11:00–12:00",
+          "text": "Vossevangen: البحيرة والقهوة، مع غداء مبكر."
+        },
+        {
+          "time": "12:00–14:30",
+          "text": "القيادة إلى Steinsdalsfossen؛ المشي خلف الشلال إذا كان الممر مفتوحًا."
+        },
+        {
+          "time": "14:30–18:00",
+          "text": "طريق Rv7 عبر Norheimsund وGranvin وجسر Hardanger إلى Eidfjord، مع وقفتين قصيرتين."
+        },
+        {
+          "time": "18:00–19:00",
+          "text": "Sæbø Camping وإطلالة البحيرة."
+        }
+      ],
+      "costs": [
+        "Tvindefossen وSteinsdalsfossen: لا تذكرة للمشاهدة؛ احتياط مواقف 100–250 NOK إجمالًا.",
+        "جسر Hardanger مدفوع؛ مشمول في احتياط رسوم الطرق العام."
+      ],
+      "notes": [
+        "أُضيفت هاردانغر بعد تفويضك زيادة الساعات. لتخفيف اليوم: اترك Steinsdalsfossen واتجه من فوس إلى Granvin مباشرة.",
+        "لا نضيف Bergen أو Trolltunga أو Stavanger؛ ستزيد القيادة كثيرًا وتضغط آخر يومين."
+      ],
+      "imageKey": "stein",
+      "optional": null
+    },
+    {
+      "n": 8,
+      "date": "2026-09-26",
+      "title": "Vøringsfossen · هضبة الجبال إلى أوسلو",
+      "phase": "٢ · الجنوب ثم أوسلو",
+      "camp": "oslo",
+      "km": 320,
+      "drive": "5.5–6.5 س",
+      "hours": "08:30–18:30",
+      "desc": "صباح عند أحد أجمل شلالات الرحلة، ثم عبور Hardangervidda إلى Geilo وأوسلو. لا زيارة مدينة طويلة في هذا اليوم.",
+      "stops": [
+        "saebo",
+        "voring",
+        "geilo",
+        "honefoss",
+        "oslo"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "saebo",
+            "voring",
+            "geilo",
+            "honefoss",
+            "oslo"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:30–10:15",
+          "text": "صعود إلى مواقف Fossli ومنصات Vøringsfossen والجسر، نحو ساعة مشي وتصوير."
+        },
+        {
+          "time": "10:15–13:00",
+          "text": "عبور Rv7 وهضبة Hardangervidda، توقف منظر قصير وغداء في Geilo."
+        },
+        {
+          "time": "13:00–17:30",
+          "text": "القيادة عبر Hønefoss إلى Topcamp Bogstad مع استراحة."
+        },
+        {
+          "time": "17:30–18:30",
+          "text": "خدمات الكرفان وعشاء؛ جهز زيارة أوسلو صباح الغد."
+        }
+      ],
+      "costs": [
+        "Vøringsfossen: مشاهدة مجانية؛ احتياط مواقف 100–200 NOK."
+      ],
+      "notes": [
+        "افحص Rv7 صباحًا. عند إغلاق الهضبة، اتجه عبر نفق Lærdal وE16 بعد التحقق؛ ألغِ الشلال والوقوف الطويل واسمح بتكرار اضطراري للطريق."
+      ],
+      "imageKey": "voring",
+      "optional": null
+    },
+    {
+      "n": 9,
+      "date": "2026-09-27",
+      "title": "نصف يوم أوسلو · النوم على Vänern",
+      "phase": "٣ · العودة",
+      "camp": "bomstad",
+      "km": 235,
+      "drive": "3–3.5 س + نقل المدينة",
+      "hours": "08:00–18:30",
+      "desc": "اترك الكرفان في المخيم بإذن لموقف نهاري، وزر أوسلو بالنقل العام، ثم اتجه شرقًا نحو بحيرة Vänern.",
+      "stops": [
+        "oslo",
+        "opera",
+        "aker",
+        "bomstad"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "oslo",
+            "bomstad"
+          ]
+        },
+        {
+          "mode": "transit",
+          "points": [
+            "oslo",
+            "opera"
+          ]
+        },
+        {
+          "mode": "walk",
+          "points": [
+            "opera",
+            "aker"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:00–09:00",
+          "text": "تسجيل خروج/موقف نهاري متفق عليه، ثم النقل العام إلى المركز."
+        },
+        {
+          "time": "09:00–13:00",
+          "text": "سطح الأوبرا، الواجهة البحرية، Akershus من الخارج وAker Brygge؛ غداء مبكر."
+        },
+        {
+          "time": "13:00–14:00",
+          "text": "العودة إلى الكرفان والانطلاق."
+        },
+        {
+          "time": "14:00–18:00",
+          "text": "القيادة نحو كارلستاد مع استراحة ثم Bomstadbaden."
+        },
+        {
+          "time": "18:00–18:30",
+          "text": "المشي على شاطئ Vänern."
+        }
+      ],
+      "costs": [
+        "المشي ومعالم الواجهات الخارجية مجاني؛ احتياط نقل أوسلو 150–180 NOK للفرد، 450–540 للثلاثة.",
+        "موقف المخيم بعد الخروج: احتياط 100–200 NOK؛ أكد الإذن والرسوم."
+      ],
+      "notes": [
+        "أوسلو نصف يوم فعلي 09:00–13:00. لا تضف المتاحف وحديقة Vigeland في الزيارة نفسها.",
+        "إذا منع المخيم الوقوف بعد الخروج، استخدم موقفًا قانونيًا مناسبًا لارتفاع الكرفان وابدأ الزيارة من هناك؛ لا تدخل مرآب سيارات عاديًا."
+      ],
+      "imageKey": "oslo",
+      "optional": null
+    },
+    {
+      "n": 10,
+      "date": "2026-09-28",
+      "title": "ستوكهولم · غاملا ستان قبل الوداع",
+      "phase": "٣ · العودة",
+      "camp": "bredang",
+      "km": 310,
+      "drive": "3.5–4.5 س + مترو",
+      "hours": "08:00–19:30",
+      "desc": "نعيدكم إلى منطقة ستوكهولم قبل يوم التسليم. بعد تسجيل المخيم، تتركز الزيارة في البلدة القديمة والواجهة البحرية.",
+      "stops": [
+        "bomstad",
+        "orebro",
+        "bredang",
+        "gamla",
+        "cityhall"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "bomstad",
+            "orebro",
+            "bredang"
+          ]
+        },
+        {
+          "mode": "transit",
+          "points": [
+            "bredang",
+            "gamla"
+          ]
+        },
+        {
+          "mode": "walk",
+          "points": [
+            "gamla",
+            "cityhall"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:00–12:30",
+          "text": "قيادة إلى Bredäng عبر Örebro مع استراحة قصيرة."
+        },
+        {
+          "time": "12:30–14:00",
+          "text": "تسجيل المخيم، غداء خفيف ثم مشي للمترو والنزول في Gamla Stan."
+        },
+        {
+          "time": "14:00–18:00",
+          "text": "Stortorget وأزقة Gamla Stan والقصر من الخارج، ثم الماء وإطلالة مجلس المدينة."
+        },
+        {
+          "time": "18:00–19:30",
+          "text": "العودة إلى المخيم، ترتيب الحقائب والتنظيف وتجهيز التسليم."
+        }
+      ],
+      "costs": [
+        "المشي والمعالم من الخارج مجاني؛ احتياط مترو 100–130 SEK للفرد ذهابًا وعودة، 300–390 للثلاثة."
+      ],
+      "notes": [
+        "ستوكهولم نصف يوم فعلي 14:00–18:00. لا تؤجل أي زيارة ليوم 29.",
+        "يلزم تأكيد المخيم وتفريغ المياه. البديل First Camp City–Stockholm بعد تأكيد تشغيله وزمنه إلى مقر التسليم."
+      ],
+      "imageKey": "stockholm",
+      "optional": null
+    },
+    {
+      "n": 11,
+      "date": "2026-09-29",
+      "title": "تسليم 12:00 · إقلاع 16:00",
+      "phase": "٣ · التسليم",
+      "camp": null,
+      "km": 65,
+      "drive": "1–1.5 س + نقل المطار",
+      "hours": "08:30–16:00",
+      "desc": "صباح مخصص للتسليم في Touring Cars، Bristagatan 12، ثم المطار. لا قيادة من النرويج ولا برنامج مدينة في يوم الرحلة.",
+      "stops": [
+        "bredang",
+        "depot",
+        "airport"
+      ],
+      "segments": [
+        {
+          "mode": "road",
+          "points": [
+            "bredang",
+            "depot"
+          ]
+        },
+        {
+          "mode": "transit",
+          "points": [
+            "depot",
+            "airport"
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "time": "08:30–09:00",
+          "text": "تفريغ المياه والمرحاض في نقطة معتمدة، إكمال التنظيف ومراجعة الأمتعة."
+        },
+        {
+          "time": "09:00–10:30",
+          "text": "القيادة إلى مقر Touring Cars مع تعبئة الوقود قربه؛ هامش للازدحام."
+        },
+        {
+          "time": "10:30–12:00",
+          "text": "فحص وتسليم الكرفان؛ الموعد النهائي 12:00 ظهرًا."
+        },
+        {
+          "time": "12:00–13:00",
+          "text": "النقل المحجوز إلى Arlanda؛ الهدف الوصول إلى الصالة قبل 13:00."
+        },
+        {
+          "time": "13:00–16:00",
+          "text": "تسجيل الطيران والأمتعة والأمن، ثم الإقلاع 16:00."
+        }
+      ],
+      "costs": [
+        "خدمة نقل المطار مذكورة ضمن فئة Medium Automatic؛ نسق التوقيت مع المحطة.",
+        "سعر إيجار الكرفان والتأمين والوديعة غير متاح في رابط البحث ولا يدخل ميزانية الأنشطة."
+      ],
+      "notes": [
+        "الخطة تفترض مطار Arlanda ARN؛ إن كانت الرحلة من مطار آخر يتغير انتقال المطار.",
+        "رابطك يعرض 2 أشخاص وإعادة 15:00؛ عدّل/أكد العقد إلى 3 بالغين وإعادة 12:00. لا يُعد تعديل رابط البحث تعديلًا للحجز.",
+        "الفئة تتسع حتى 4؛ الطول المنشور 5.9–7.6 م والارتفاع 2.5–3.2 م. خذ القياسات الفعلية قبل حجز العبّارة."
+      ],
+      "imageKey": "stockholm",
+      "optional": null
+    }
+  ],
+  "sources": [
+    [
+      "القارب والقطار: البرنامج الرسمي",
+      "https://www.norwaysbest.com/en/flam/things-to-do/flam-railway-and-fjord-cruise-naroyfjord"
+    ],
+    [
+      "قارب Nærøyfjord: جدول سبتمبر 2026",
+      "https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"
+    ],
+    [
+      "عبّارة Geiranger–Hellesylt",
+      "https://www.fjordtours.com/en/norway/transportation/car-ferry/geiranger-hellesylt"
+    ],
+    [
+      "تعرفة مخيم غيرانغر 2026",
+      "https://www.geirangercamping.no/GCpris2D.HTML"
+    ],
+    [
+      "Romsdalsgondolen",
+      "https://www.romsdalsgondolen.no/"
+    ],
+    [
+      "Loen Skylift",
+      "https://www.loenskylift.no/"
+    ],
+    [
+      "Briksdal",
+      "https://www.briksdal.com/"
+    ],
+    [
+      "الطرق وحالة الجبال",
+      "https://www.vegvesen.no/en/traffic-information/traffic-information/"
+    ],
+    [
+      "Touring Cars Stockholm",
+      "https://www.touringcars.com/en/rental-office/stockholm/"
+    ],
+    [
+      "فئة الكرفان Medium Automatic",
+      "https://www.touringcars.com/en/vehicle/medium-automatic/"
+    ],
+    [
+      "فيديو المستخدم — لم أتمكن من مشاهدة محتواه",
+      "https://youtu.be/dYfi3tEJRbg"
+    ]
+  ]
+}

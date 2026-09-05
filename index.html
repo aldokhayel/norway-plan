@@ -1,187 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="خطة رحلة كرفان من ستوكهولم إلى أوسلو وفوس وسترين، مع خريطة تفاعلية ومخيمات ومسارات خرائط Google.">
-<title>رحلة الكرفان الجديدة: ستوكهولم، فوس، وسترين</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://unpkg.com">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="رحلة كرفان لثلاثة أصدقاء 19–29 سبتمبر 2026: غيرانغر ولوين وفلام وهاردانغر وأوسلو، مع مخيم مختلف كل ليلة وخريطة يومية وميزانية.">
+<title>بين البحيرات والفيوردات · رحلة سبتمبر 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://unpkg.com">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynhHDfjrz0XjMZufxyfxwVZOkEAs=" crossorigin="">
-<style>
-:root{
-  --night:#11272f;--fjord:#245b64;--water:#2f7c82;--ice:#edf4f3;
-  --gold:#d5a13c;--gold-soft:#fbf0d8;--pine:#3b5a45;--ink:#172d34;
-  --muted:#60767a;--line:#cbdcda;--white:#fff;--pass:#6d7f85;
-  --visit:#bc6c34;--sleep:#26705e;--radius:18px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;background:var(--ice);color:var(--ink);line-height:1.75}
-a{color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin-inline:auto}
-h1,h2,h3{font-family:'Amiri','IBM Plex Sans Arabic',serif;line-height:1.35}
-.hero{position:relative;overflow:hidden;background:linear-gradient(145deg,#0c2028 0%,#17414a 58%,#2f7278 100%);color:#fff;padding:48px 0 56px}
-.hero::before{content:"";position:absolute;inset:auto -10% -120px;width:120%;height:260px;background:rgba(255,255,255,.05);transform:rotate(-5deg);border-radius:50%}
-.hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:end}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(213,161,60,.55);background:rgba(213,161,60,.13);color:#f1ca7a;border-radius:99px;padding:5px 15px;font-size:.86rem;font-weight:700;margin-bottom:15px}
-.hero h1{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}.hero p{color:#c6d9d7;max-width:700px;font-size:1.02rem}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:11px;padding:10px 16px;text-decoration:none;font-weight:700;font-size:.9rem;transition:.2s}
-.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--gold);color:#1d2829}.btn-ghost{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px}.stat b{display:block;color:#f1ca7a;font-size:1.5rem}.stat span{color:#c6d9d7;font-size:.82rem}
-section{padding:48px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:20px}.section-head h2{font-size:clamp(1.65rem,4vw,2.25rem);color:var(--night)}.section-head p{color:var(--muted);max-width:670px;font-size:.94rem}
-.notice{background:var(--gold-soft);border:1px solid #ead19a;border-radius:14px;padding:13px 16px;color:#715716;font-size:.9rem;margin-bottom:18px}
-.map-shell{background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 14px 34px rgba(17,39,47,.1)}
-#map{height:540px;direction:ltr}.map-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 17px;border-top:1px solid var(--line)}
-.legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.82rem}.legend span{display:flex;align-items:center;gap:6px}.dot{width:11px;height:11px;border-radius:50%;display:inline-block}.dot.sleep{background:var(--sleep)}.dot.pass{background:var(--pass)}.dot.visit{background:var(--visit)}
-.map-links{display:flex;flex-wrap:wrap;gap:8px}.map-link{background:var(--fjord);color:#fff;border-radius:9px;padding:7px 12px;text-decoration:none;font-size:.8rem;font-weight:700}
-.map-link.alt{background:var(--pine)}
-.bases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.base{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;overflow:hidden}.base::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--sleep)}.base small{color:var(--visit);font-weight:700}.base h3{font-size:1.25rem;margin:3px 0}.base p{font-size:.86rem;color:var(--muted)}
-.days{display:grid;gap:15px}.day{display:grid;grid-template-columns:86px 1fr auto;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 18px rgba(17,39,47,.05)}
-.day-date{background:var(--night);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px 8px;text-align:center}.day-date b{font-size:1.6rem;color:#f1ca7a}.day-date span{font-size:.72rem;color:#c6d9d7}
-.day-body{padding:17px 20px}.day-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px}.day h3{font-size:1.25rem}.badge{border-radius:99px;padding:2px 9px;font-size:.7rem;font-weight:700}.badge.sleep{background:#dcefe9;color:#1d6553}.badge.base{background:var(--gold-soft);color:#765817}.badge.drive{background:#e6eef0;color:#425f68}
-.day-desc{color:var(--muted);font-size:.88rem;margin-top:4px}.stop-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.stop{border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:.75rem;background:#f9fbfb}.stop strong{color:var(--visit)}
-.camp{margin-top:10px;background:#f2f8f6;border-radius:10px;padding:8px 11px;font-size:.82rem}.camp b{color:var(--sleep)}.camp a{color:var(--water);font-weight:700;text-decoration:none;margin-inline-start:7px}
-.day-map{min-width:130px;display:flex;align-items:center;justify-content:center;padding:14px;border-inline-start:1px dashed var(--line)}.day-map a{background:var(--water);color:#fff;text-decoration:none;border-radius:10px;padding:9px 12px;font-size:.8rem;font-weight:700;text-align:center}
-.road-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.road{background:var(--night);color:#d6e4e2;border-radius:15px;padding:17px}.road h3{color:#f1ca7a;font-size:1.08rem;margin-bottom:5px}.road p{font-size:.82rem}.road a{color:#fff;font-weight:700}
-footer{text-align:center;padding:28px 16px 40px;color:var(--muted);font-size:.8rem}footer a{color:var(--water);font-weight:700}
-.leaflet-popup-content{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;text-align:right;direction:rtl;line-height:1.6}.leaflet-popup-content a{color:#216c74;font-weight:700}
-.marker{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,.35)}.marker span{display:block;transform:rotate(45deg);text-align:center;line-height:24px;color:#fff;font-weight:700;font-size:12px}.marker.sleep{background:var(--sleep)}.marker.pass{background:var(--pass)}.marker.visit{background:var(--visit)}
-@media(max-width:820px){.hero-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(4,1fr)}.bases,.road-grid{grid-template-columns:1fr}.day{grid-template-columns:70px 1fr}.day-map{grid-column:1/-1;border-inline-start:0;border-top:1px dashed var(--line);padding:10px}.day-map a{width:100%}#map{height:470px}}
-@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:5px}.day{grid-template-columns:58px 1fr}.day-body{padding:14px}.day-date b{font-size:1.25rem}.map-foot{align-items:stretch}.map-links{width:100%}.map-link{flex:1;text-align:center}}
-</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="styles.css">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script defer src="legacy-images.js"></script><script defer src="trip-data.js"></script><script defer src="routes.js"></script><script defer src="app.js"></script>
 </head>
 <body>
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">🚐 النسخة الجديدة · 19–29 سبتمبر 2026</span>
-      <h1>ستوكهولم ← أوسلو ← فوس ← سترين</h1>
-      <p>رحلة أهدأ تعتمد على ثلاثة مخيمات رئيسية: يوم كامل لأوسلو، ثلاثة ليالٍ بين ريف فوس وشلالاته، وأربع ليالٍ في سترين لزيارة غيرانغر ولوين ولوفاتنت وبريكسدال.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#route-map">🗺️ افتح الخريطة</a>
-        <a class="btn btn-ghost" href="#itinerary">📅 البرنامج اليومي</a>
-        <a class="btn btn-ghost" href="original-plan.html">↩ النسخة السابقة</a>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>11</b><span>يومًا</span></div>
-      <div class="stat"><b>10</b><span>ليالٍ</span></div>
-      <div class="stat"><b>3</b><span>ليالٍ في فوس</span></div>
-      <div class="stat"><b>4</b><span>ليالٍ في سترين</span></div>
-    </div>
-  </div>
-</header>
-
+<a href="#map-section" class="skip">انتقل إلى خطة الرحلة</a>
+<nav class="topbar"><div class="wrap"><b>🚐 ثلاثة أصدقاء · رحلة الشمال</b><div><a href="#map-section">الخريطة</a><a href="#days">الأيام</a><a href="#camps">المخيمات</a><a href="#budget">الميزانية</a><a href="#booking">قبل السفر</a></div></div></nav>
+<header class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">19–29 سبتمبر 2026 · السويد والنرويج</span><h1>بين البحيرات والفيوردات</h1><p>إلى الشمال الغربي أولًا، ثم جنوبًا عبر فلام وهاردانغر. مخيم مختلف كل ليلة، وعودة عبر أوسلو إلى ستوكهولم.</p></div><div class="stats"><div class="stat"><b>3 أصدقاء</b><span>كرفان Medium Automatic</span></div><div class="stat"><b>10 ليالٍ</b><span>11 تاريخًا تقويميًا</span></div><div class="stat"><b>09–19 غالبًا</b><span>08–20 للانتقالات الطويلة</span></div><div class="stat"><b>29 سبتمبر · 12:00</b><span>تسليم الكرفان · الطيران 16:00</span></div></div></div></header>
 <main>
-<section id="route-map">
-  <div class="wrap">
-    <div class="section-head">
-      <div><h2>الخريطة والمسار</h2><p>الخريطة التفاعلية تميّز أماكن النوم عن محطات المرور والزيارات. الخطوط داخل الصفحة توضيحية؛ استخدم أزرار خرائط Google للحصول على مسار القيادة الفعلي.</p></div>
-    </div>
-    <div class="notice">تنبيه: الطريق الطبيعي في اليوم الأول يمر بمحور كارلستاد، لكن لا توجد إقامة أو يوم مستقل هناك. أصبحت الرحلة مباشرة من ستوكهولم إلى أوسلو كما طُلب.</div>
-    <div class="map-shell">
-      <div id="map" aria-label="خريطة تفاعلية لمسار رحلة الكرفان"></div>
-      <div class="map-foot">
-        <div class="legend"><span><i class="dot sleep"></i> نوم / مخيم</span><span><i class="dot pass"></i> مرور</span><span><i class="dot visit"></i> زيارة نهارية</span></div>
-        <div class="map-links">
-          <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stockholm%2C%20Sweden&destination=Stryn%2C%20Norway&travelmode=driving&waypoints=Oslo%2C%20Norway%7CV%C3%B8ringsfossen%2C%20Norway%7CVossevangen%2C%20Norway%7CTvindefossen%2C%20Norway%7CFl%C3%A5m%2C%20Norway">المسار الرئيسي في Google</a>
-          <a class="map-link alt" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stryn%2C%20Norway&destination=Stryn%2C%20Norway&travelmode=driving&waypoints=Loen%20Skylift%2C%20Norway%7CLovatnet%2C%20Norway%7CBriksdal%20Glacier%2C%20Norway">جولة سترين الغربية</a>
-          <a class="map-link alt" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Stryn%2C%20Norway&destination=Stryn%2C%20Norway&travelmode=driving&waypoints=Hellesylt%2C%20Norway%7CGeiranger%2C%20Norway%7CDalsnibba%2C%20Norway">جولة غيرانغر</a>
-        </div>
-      </div>
-    </div>
-    <div class="bases">
-      <article class="base"><small>ليلتان · 19–20 سبتمبر</small><h3>أوسلو</h3><p>Topcamp Bogstad — الوصول من ستوكهولم ثم يوم كامل للعاصمة بدون تحريك الكرفان.</p></article>
-      <article class="base"><small>3 ليالٍ · 21–23 سبتمبر</small><h3>Vossevangen</h3><p>Voss Camping — قاعدة للشلالات والريف: Tvindefossen وStalheim وSkjervsfossen وSteinsdalsfossen.</p></article>
-      <article class="base"><small>4 ليالٍ · 24–27 سبتمبر</small><h3>سترين</h3><p>Mindresunde Camping — قاعدة واحدة لغيرانغر، لوين، لوفاتنت، أولدن وبريكسدال.</p></article>
-    </div>
-  </div>
-</section>
-
-<section id="itinerary" style="padding-top:12px">
-  <div class="wrap">
-    <div class="section-head"><div><h2>البرنامج اليومي</h2><p>كل بطاقة توضح مكان النوم، المدن والقرى التي يمر بها المسار، والمخيم المقترح.</p></div></div>
-    <div class="days" id="days"></div>
-  </div>
-</section>
-
-<section style="padding-top:8px">
-  <div class="wrap">
-    <div class="section-head"><div><h2>ملاحظات الطريق في أواخر سبتمبر</h2><p>هذه النقاط مهمة خصوصًا للكرفان والطرق الجبلية.</p></div></div>
-    <div class="road-grid">
-      <article class="road"><h3>الطريق القديم Rv258</h3><p>Gamle Strynefjellsvegen طريق موسمي ضيق وقد أُغلق في أعوام سابقة ابتداءً من 15 سبتمبر. استخدم Rv15 كنقطة افتراضية وتحقق يوميًا من <a href="https://www.vegvesen.no/trafikk" target="_blank" rel="noopener">Vegvesen</a>.</p></article>
-      <article class="road"><h3>غيرانغر ودالسنيبا</h3><p>اجعل دالسنيبا اختيارية حسب الطقس وحالة الطريق. إذا تعذر المسار الجبلي، تبقى رحلة Hellesylt–Geiranger البحرية والعودة من الطريق المتاح بديلًا جيدًا.</p></article>
-      <article class="road"><h3>المخيمات المختارة</h3><p>Voss Camping يعمل طوال العام وموسمه الكامل حتى 30 سبتمبر. Mindresunde مفتوح حتى 1 نوفمبر، ولذلك يلائمان تواريخ الرحلة.</p></article>
-    </div>
-  </div>
-</section>
+<section id="map-section"><div class="wrap"><div class="section-head"><div><span class="kicker">المسار اليومي</span><h2>كل يوم، وجهة جديدة</h2></div><p>١ الشمال: 20–23 سبتمبر · ٢ الجنوب: 24–26 · ٣ العودة: 27–29. اليوم 20 للعبور الطويل، واليوم 23 يجمع بريكسدال والانتقال جنوبًا.</p></div><div class="map-shell"><div class="map-tools"><label for="routeSelect" class="sr-only">اختر يوم الرحلة</label><select id="routeSelect"></select><button class="btn dark" id="overview">المسار الكامل</button><button class="btn dark" id="openSelected">تفاصيل اليوم</button><span class="map-status" id="mapStatus" role="status">جارٍ تجهيز الخريطة…</span></div><div id="map" aria-label="خريطة تفاعلية لمسار الرحلة"></div><div class="map-foot"><div class="legend"><span><i style="background:#21705b"></i>مخيم</span><span><i style="background:#b96835"></i>زيارة</span><span>━━ قيادة</span><span style="color:#168ab0">┄ عبّارة / قارب</span><span style="color:#8763a8">┄ قطار / نقل</span></div><span class="map-help">خطوط النقل غير البري تخطيطية. توجيه الطرق لسيارة عادية، وليس اعتمادًا لأبعاد الكرفان.</span></div></div><div id="selectedSummary" class="selected-summary"></div><p class="map-caveat">المسافات تقريبية؛ اجمع وقت القيادة مع الوقفات والعبّارات. افتح روابط Google Maps داخل اليوم للتوجيه، وافحص الطرق لدى <a href="https://www.vegvesen.no/trafikk" target="_blank" rel="noopener">Vegvesen</a>. الخرائط والطرق لا تعرض إغلاقات السفر المستقبلية.</p></div></section>
+<section id="days"><div class="wrap"><div class="section-head"><div><span class="kicker">اليوم بيومه</span><h2>شلالات، قرى، وماء في كل اتجاه</h2></div><p>افتح أي يوم للجدول بالساعات، المخيم، تكاليف الثلاثة، الصور والمسارات. المواعيد تخطيطية إلا ما ذُكر أنه منشور رسميًا.</p></div><div class="cards" id="cards"></div></div></section>
+<section id="camps"><div class="wrap"><div class="section-head"><div><span class="kicker">10 ليالٍ · 10 مخيمات</span><h2>مكان جميل لنهاية كل يوم</h2></div><p>تقييمات Google من صفحات Google أو ناقلين مسمّين، روجعت 5 سبتمبر 2026؛ ليست تغذية مباشرة. الإطلالة تعتمد على الموقف. لا يوجد حجز منفّذ.</p></div><div class="route-note">الأولوية للطبيعة والموقع على الطريق. Gryta وMjelva وBomstadbaden أفضل الخيارات تقييمًا؛ أوسلو 3.8/5 اختيار عملي لزيارة المدينة، وSæbø وBredäng نحو 4.0/5. راجع أحدث التعليقات قبل الحجز.</div><div class="camp-grid" id="campCards"></div></div></section>
+<section id="budget"><div class="wrap"><div class="section-head"><div><span class="kicker">ميزانية لثلاثة بالغين</span><h2>اعرفوا ما تدفعونه</h2></div><p>مخصصات تخطيطية وليست عروض أسعار. NOK للنرويج وSEK للسويد؛ لا نجمع العملتين كأنهما متساويتان. الأسعار تشمل المجموعة حيث يُذكر ذلك.</p></div><div class="budget-grid"><div class="budget-card"><h3>المخيمات · كل المجموعة</h3><div id="campTotals"></div><p>موقع واحد للكرفان و3 بالغين، مع احتياط للكهرباء. قد يزيد الإجمالي للدش أو الغسيل أو اختيار صف الماء.</p></div><div class="budget-card"><h3>الأنشطة والعبّارات · NOK</h3><dl><div><dt>قطار فلام + القارب + حافلة العودة</dt><dd>4,800–6,300</dd></div><div><dt>Geiranger–Hellesylt + عبّارتان محليتان</dt><dd>1,800–3,200</dd></div><div><dt>تلفريك واحد اختياري</dt><dd>1,800–2,550</dd></div></dl><p>التلفريك الثاني وTroll Car إضافيان، وليسا مطلوبين لإكمال الرحلة. أسعار العبّارات تحتاج طول الكرفان الفعلي.</p></div><div class="budget-card"><h3>الوقود والطعام والرسوم</h3><p><b id="distanceTotal"></b> مسافة تخطيطية. استهلاك افتراضي 11–14 لتر/100 كم؛ احتياط قرابة <b id="fuelLitres"></b> لتر، وليس مواصفة مضمونة للكرفان.</p><p>تكلفة الوقود = اللترات المعبأة × سعر المضخة بعملة البلد. لا سعر وقود حالي مؤكد.</p><p>الطعام لثلاثة: خصصوا يوميًا 600–900 كرونة بعملة البلد مع الطبخ، وزيادة للمطاعم. رسوم طرق ومواقف ونقل: احتياط 2,000–3,500 NOK و500–1,000 SEK.</p><p><b>خارج التقدير:</b> إيجار الكرفان، التأمين والوديعة، الطيران، رسوم الشركة الإدارية، المشتريات الشخصية.</p></div></div><p class="map-caveat">السعر المحدد الموثق: غيرانغر في سبتمبر = 250 للموقع + 3 × 50 للبالغين + 50 كهرباء = 450 NOK، دون الدش. فلام يبدأ رسميًا من 570 NOK؛ بقية أسعار المخيمات تقديرات حتى يظهر عرض حجز لـ3 بالغين.</p></div></section>
+<section id="booking"><div class="wrap"><div class="section-head"><div><span class="kicker">قبل تثبيت الحجوزات</span><h2>التفاصيل التي تجعل الرحلة سلسة</h2></div></div><div class="tips"><article class="tip"><h3>الحجز الصحيح للكرفان</h3><p>الوصول 19 سبتمبر 08:00، الاستلام المخطط 11:00، والتسليم 29 سبتمبر قبل 12:00. رابط البحث الحالي يذكر شخصين وإعادة 15:00؛ اطلب تأكيدًا لثلاثة بالغين و12:00. الفئة حتى 4 أشخاص، لكن الأسرة والطول الفعليان يتأكدان من المحطة.</p><a href="https://www.touringcars.com/en/vehicle/medium-automatic/" target="_blank" rel="noopener">تفاصيل الفئة</a></article><article class="tip"><h3>احجز بالترتيب</h3><p>الكرفان أولًا، ثم موعد عبّارة 22 سبتمبر وطول المركبة، وحزمة فلام في 24 سبتمبر، والمخيمات. رتب وصول Mjelva المتأخر يوم 20. غيرانغر لا يحجز المواقع مسبقًا؛ اترك له بديلًا محليًا مؤكدًا.</p></article><article class="tip"><h3>الساعات والطقس</h3><p>09:00–19:00 غالبًا، مع بداية 08:00 عند الحاجة. انتهوا من الطرق الجبلية في الضوء؛ اليوم 20 هو الاستثناء الطويل. تبادل القيادة فقط بين المسجلين في العقد، وخذوا استراحة كل نحو ساعتين. يمكن حذف التلفريك والالتفاف الاختياري في هاردانغر عند التعب.</p></article><article class="tip"><h3>طريق مستمر مع استثناءات واضحة</h3><p>العبّارة تخرج بكم من غيرانغر باتجاه الجنوب. نفق Lærdal ثم فلام وفوس وهاردانغر وأوسلو يمنع العودة على الطريق نفسه. بحيرات لوين وبريكسدال طرق وديان لها رجوع قصير، والقطار والقارب أنشطة تعود إلى الكرفان.</p></article><article class="tip"><h3>آخر 24 ساعة</h3><p>ستوكهولم 28 سبتمبر 14:00–18:00. ليلة Bredäng تحتاج تأكيدًا. يوم 29 انطلاق 09:00 نحو Bristagatan 12، تسليم قبل الظهر، ثم النقل إلى المطار. نفترض Arlanda ARN وهدف الوصول للصالة 13:00 للرحلة 16:00.</p></article><article class="tip"><h3>الخدمات آخر سبتمبر</h3><p>فتح المخيم لا يعني تشغيل كل القوارب والمطاعم. اطلبوا موقفًا بمشهد جيد ومقاس مناسب، كهرباء وماء وتفريغ، وتأكيد الدش والاستقبال. لم ننفذ حجوزات أو نرسل رسائل نيابة عنكم.</p></article></div></div></section>
+<section id="sources"><div class="wrap"><details><summary>مصادر الخطة والأسعار · مراجعة 5 سبتمبر 2026</summary><p>استُخدم الرسم المرفق لتحديد الاتجاه العام، لا باعتباره طريقًا ملاحيًا. تعذر استخراج محتوى فيديو YouTube، لذلك لا ننسب إليه أماكن لم نتحقق منها. صور المخيمات من مواقعها أو المصادر المرتبطة؛ الصور موسمية ولا تضمن طقس سبتمبر.</p><ul id="sourceList"></ul></details></div></section>
 </main>
-
-<footer>الخريطة داخل الصفحة توضيحية وتعتمد على OpenStreetMap · مسارات القيادة تفتح في خرائط Google · <a href="original-plan.html">فتح الخطة السابقة</a></footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-const q=s=>encodeURIComponent(s);
-const gm=(origin,destination,waypoints=[])=>`https://www.google.com/maps/dir/?api=1&origin=${q(origin)}&destination=${q(destination)}&travelmode=driving${waypoints.length?`&waypoints=${waypoints.map(q).join('%7C')}`:''}`;
-
-const DAYS=[
- {n:1,dow:'السبت',date:'19 سبتمبر',title:'ستوكهولم ← أوسلو',drive:'≈ 520 كم · 6–7 ساعات',desc:'استلام الكرفان والانطلاق مباشرة إلى أوسلو. يوم قيادة طويل؛ خطط لتوقفين على الأقل.',sleep:'أوسلو',passes:['أوربرو','محور كارلستاد — مرور فقط'],camp:'Topcamp Bogstad',campUrl:'https://topcamp.no/topcamp-bogstad',map:gm('Stockholm, Sweden','Topcamp Bogstad, Oslo, Norway',['Örebro, Sweden'])},
- {n:2,dow:'الأحد',date:'20 سبتمبر',title:'يوم كامل في أوسلو',drive:'تنقل محلي',desc:'دار الأوبرا، Aker Brygge، حديقة فيغلاند أو المتاحف. اترك الكرفان في المخيم واستخدم النقل العام.',sleep:'أوسلو',passes:['وسط أوسلو','Bygdøy — اختياري'],camp:'Topcamp Bogstad · الليلة الثانية',campUrl:'https://topcamp.no/topcamp-bogstad',map:'https://www.google.com/maps/search/?api=1&query=Oslo%20attractions'},
- {n:3,dow:'الاثنين',date:'21 سبتمبر',title:'أوسلو ← Vøringsfossen ← Vossevangen',drive:'≈ 400 كم · 6–7 ساعات مع التوقف',desc:'عبور الريف والهضاب نحو فوس مع زيارة شلال Vøringsfossen. هذا المسار يتجنب المرور المبكر بفلام.',sleep:'Vossevangen',passes:['Hønefoss','Geilo','Eidfjord','Vøringsfossen'],camp:'Voss Camping',campUrl:'https://vosscamping.no/en/',map:gm('Oslo, Norway','Voss Camping, Norway',['Geilo, Norway','Vøringsfossen, Norway','Eidfjord, Norway'])},
- {n:4,dow:'الثلاثاء',date:'22 سبتمبر',title:'شلالات فوس الشمالية',drive:'≈ 75 كم · جولة دائرية',desc:'يوم ريفي هادئ إلى Tvindefossen ثم مطل Stalheim ووادي Nærøydalen، والعودة إلى نفس المخيم.',sleep:'Vossevangen',passes:['Tvindefossen','Stalheim','Nærøydalen'],camp:'Voss Camping · الليلة الثانية',campUrl:'https://vosscamping.no/en/',map:gm('Voss Camping, Norway','Voss Camping, Norway',['Tvindefossen, Norway','Stalheim Hotel, Norway'])},
- {n:5,dow:'الأربعاء',date:'23 سبتمبر',title:'شلالات هاردانغر من فوس',drive:'≈ 180 كم · جولة يومية',desc:'جولة إلى Skjervsfossen ثم Steinsdalsfossen قرب Norheimsund، مع وقت مرن للريف والبحيرات.',sleep:'Vossevangen',passes:['Skjervsfossen','Granvin','Norheimsund','Steinsdalsfossen'],camp:'Voss Camping · الليلة الثالثة',campUrl:'https://vosscamping.no/en/',map:gm('Voss Camping, Norway','Voss Camping, Norway',['Skjervsfossen, Norway','Steinsdalsfossen, Norway'])},
- {n:6,dow:'الخميس',date:'24 سبتمبر',title:'Vossevangen ← فلام ← سترين',drive:'≈ 330 كم · 5–6 ساعات دون التوقفات',desc:'يوم الانتقال إلى قاعدة سترين. توقف في فلام والواجهة البحرية، ثم تابع عبر سوغندال وسكي.',sleep:'سترين',passes:['فلام','Aurland','Lærdal','Sogndal','Skei'],camp:'Mindresunde Camping · الليلة الأولى',campUrl:'https://www.mindresunde.no/campingen',map:gm('Voss Camping, Norway','Mindresunde Camping, Stryn, Norway',['Flåm, Norway','Lærdal, Norway','Sogndal, Norway','Skei, Norway'])},
- {n:7,dow:'الجمعة',date:'25 سبتمبر',title:'لوين ولوفاتنت وبريكسدال',drive:'≈ 140 كم · جولة دائرية',desc:'ابدأ بتلفريك Loen Skylift، ثم بحيرة Lovatnet وأولدن ووادي بريكسدال. اختر الأنشطة حسب الطقس.',sleep:'سترين',passes:['Loen','Lovatnet','Olden','Briksdal'],camp:'Mindresunde Camping · الليلة الثانية',campUrl:'https://www.mindresunde.no/campingen',map:gm('Mindresunde Camping, Stryn, Norway','Mindresunde Camping, Stryn, Norway',['Loen Skylift, Norway','Lovatnet, Norway','Olden, Norway','Briksdal Glacier, Norway'])},
- {n:8,dow:'السبت',date:'26 سبتمبر',title:'غيرانغر من قاعدة سترين',drive:'يوم كامل · المسافة حسب العبّارة والطريق المفتوح',desc:'اتجه إلى Hellesylt ثم غيرانغر. أضف دالسنيبا فقط إذا كان الطريق والطقس مناسبين للكرفان.',sleep:'سترين',passes:['Hellesylt','Geiranger','Dalsnibba — اختياري'],camp:'Mindresunde Camping · الليلة الثالثة',campUrl:'https://www.mindresunde.no/campingen',map:gm('Mindresunde Camping, Stryn, Norway','Mindresunde Camping, Stryn, Norway',['Hellesylt, Norway','Geiranger, Norway','Dalsnibba, Norway'])},
- {n:9,dow:'الأحد',date:'27 سبتمبر',title:'سترين وهِيِلّه — يوم مرن',drive:'≈ 55 كم · قيادة خفيفة',desc:'يوم احتياطي للطقس: بحيرة Strynevatnet، قرية Hjelle ومسار Segestad، أو تعويض أي نشاط فات في اليومين السابقين.',sleep:'سترين',passes:['Stryn','Hjelle','Strynevatnet'],camp:'Mindresunde Camping · الليلة الرابعة',campUrl:'https://www.mindresunde.no/campingen',map:gm('Mindresunde Camping, Stryn, Norway','Mindresunde Camping, Stryn, Norway',['Hjelle, Norway'])},
- {n:10,dow:'الاثنين',date:'28 سبتمبر',title:'سترين ← لوم ← ليلهامر',drive:'≈ 315 كم · 4.5–5.5 ساعات',desc:'بدء العودة عبر Rv15 الآمن افتراضيًا بدل الطريق القديم الموسمي، مع توقف في لوم وكنيستها الخشبية.',sleep:'ليلهامر',passes:['Hjelle','Grotli','Lom','Otta'],camp:'Lillehammer Turistsenter',campUrl:'https://www.lillehammerturistsenter.no/nb',map:gm('Mindresunde Camping, Stryn, Norway','Lillehammer Turistsenter, Norway',['Grotli, Norway','Lom, Norway','Otta, Norway'])},
- {n:11,dow:'الثلاثاء',date:'29 سبتمبر',title:'ليلهامر ← ستوكهولم',drive:'≈ 610 كم · 7–8 ساعات',desc:'انطلاق مبكر والعودة إلى ستوكهولم عبر Kongsvinger وأوربرو. لا توجد ليلة مخيم بعد الوصول.',sleep:'نهاية الرحلة',passes:['Kongsvinger','Örebro','Stockholm'],camp:null,map:gm('Lillehammer, Norway','Stockholm, Sweden',['Kongsvinger, Norway','Örebro, Sweden'])}
-];
-
-document.getElementById('days').innerHTML=DAYS.map(d=>`
-  <article class="day">
-    <div class="day-date"><b>${d.n}</b><span>${d.dow}<br>${d.date}</span></div>
-    <div class="day-body">
-      <div class="day-top"><h3>${d.title}</h3><span class="badge ${d.n===11?'drive':'sleep'}">${d.n===11?'وصول':'نوم: '+d.sleep}</span>${[2,4,5,7,8,9].includes(d.n)?'<span class="badge base">بدون تغيير المخيم</span>':''}</div>
-      <div class="badge drive">🚐 ${d.drive}</div>
-      <p class="day-desc">${d.desc}</p>
-      <div class="stop-row">${d.passes.map(p=>`<span class="stop"><strong>مرور/زيارة:</strong> ${p}</span>`).join('')}</div>
-      ${d.camp?`<div class="camp"><b>🏕️ ${d.camp}</b><a href="${d.campUrl}" target="_blank" rel="noopener">الموقع والحجز</a></div>`:''}
-    </div>
-    <div class="day-map"><a href="${d.map}" target="_blank" rel="noopener">فتح مسار اليوم<br>في Google Maps</a></div>
-  </article>`).join('');
-
-const map=L.map('map',{scrollWheelZoom:false}).setView([61.0,10.0],5);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
-const icon=(type,label)=>L.divIcon({className:'',html:`<div class="marker ${type}"><span>${label}</span></div>`,iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-27]});
-const points=[
- {name:'ستوكهولم',lat:59.3293,lng:18.0686,type:'pass',label:'ب',note:'بداية ونهاية الرحلة'},
- {name:'أوسلو',lat:59.9139,lng:10.7522,type:'sleep',label:'2',note:'ليلتان · Topcamp Bogstad'},
- {name:'Vøringsfossen',lat:60.4266,lng:7.2518,type:'visit',label:'ش',note:'زيارة شلال في طريق فوس'},
- {name:'Vossevangen',lat:60.6287,lng:6.4147,type:'sleep',label:'3',note:'3 ليالٍ · Voss Camping'},
- {name:'Tvindefossen',lat:60.7269,lng:6.4932,type:'visit',label:'ش',note:'جولة يومية من فوس'},
- {name:'Skjervsfossen',lat:60.5864,lng:6.6337,type:'visit',label:'ش',note:'جولة شلالات هاردانغر'},
- {name:'Steinsdalsfossen',lat:60.3709,lng:6.1028,type:'visit',label:'ش',note:'يمكن المشي خلف الشلال'},
- {name:'فلام',lat:60.8628,lng:7.1146,type:'pass',label:'م',note:'توقف في طريق سترين'},
- {name:'Sogndal',lat:61.2296,lng:7.1003,type:'pass',label:'م',note:'مرور'},
- {name:'سترين',lat:61.9045,lng:6.7226,type:'sleep',label:'4',note:'4 ليالٍ · Mindresunde Camping'},
- {name:'Loen / Lovatnet',lat:61.8712,lng:6.8491,type:'visit',label:'ز',note:'جولة من سترين'},
- {name:'Briksdal',lat:61.6658,lng:6.8794,type:'visit',label:'ز',note:'وادي بريكسدال'},
- {name:'غيرانغر',lat:62.1015,lng:7.2059,type:'visit',label:'ز',note:'رحلة يوم كامل من سترين'},
- {name:'لوم',lat:61.8377,lng:8.5684,type:'pass',label:'م',note:'توقف في طريق العودة'},
- {name:'ليلهامر',lat:61.1153,lng:10.4662,type:'sleep',label:'1',note:'ليلة عودة · Lillehammer Turistsenter'},
- {name:'Kongsvinger',lat:60.1905,lng:12.0038,type:'pass',label:'م',note:'مرور في اليوم الأخير'},
- {name:'أوربرو',lat:59.2753,lng:15.2134,type:'pass',label:'م',note:'استراحة في طريق ستوكهولم'}
-];
-points.forEach(p=>L.marker([p.lat,p.lng],{icon:icon(p.type,p.label)}).addTo(map).bindPopup(`<b>${p.name}</b><br>${p.note}<br><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q(p.name)}">خرائط Google</a>`));
-const mainRoute=[[59.3293,18.0686],[59.9139,10.7522],[60.4266,7.2518],[60.6287,6.4147],[60.8628,7.1146],[61.2296,7.1003],[61.9045,6.7226],[61.8377,8.5684],[61.1153,10.4662],[60.1905,12.0038],[59.2753,15.2134],[59.3293,18.0686]];
-const vossLoop=[[60.6287,6.4147],[60.7269,6.4932],[60.6287,6.4147],[60.5864,6.6337],[60.3709,6.1028],[60.6287,6.4147]];
-const strynLoop=[[61.9045,6.7226],[61.8712,6.8491],[61.6658,6.8794],[61.9045,6.7226],[62.1015,7.2059],[61.9045,6.7226]];
-L.polyline(mainRoute,{color:'#245b64',weight:4,opacity:.85}).addTo(map);
-L.polyline(vossLoop,{color:'#bc6c34',weight:3,dashArray:'7 7',opacity:.9}).addTo(map);
-L.polyline(strynLoop,{color:'#bc6c34',weight:3,dashArray:'7 7',opacity:.9}).addTo(map);
-map.fitBounds(L.latLngBounds(points.map(p=>[p.lat,p.lng])),{padding:[28,28]});
-</script>
-</body>
-</html>
+<footer>رحلة خاصة لثلاثة أصدقاء · 19–29 سبتمبر 2026 · <a href="previous-plan.html">الخطة قبل هذه المراجعة</a> · <a href="original-plan.html">النسخة الأصلية</a> · <a href="https://github.com/aldokhayel/norway-plan">GitHub</a></footer>
+<dialog id="dayDialog" aria-labelledby="modalTitle"><div id="modal"></div></dialog>
+<noscript><p class="wrap">تحتاج الخريطة والبطاقات إلى JavaScript. <a href="PLAN.md">اقرأ الخطة النصية هنا</a>.</p></noscript>
+</body></html>
