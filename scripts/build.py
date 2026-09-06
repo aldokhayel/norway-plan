@@ -20,7 +20,12 @@ for d in t['days']:
  lines+=['','### الأنشطة والتكلفة','']+['- '+c for c in d['costs']]
  if d['camp']:
   c=camps[d['camp']];price='–'.join(map(str,c['price']))
-  lines += ['','### مخيم الليلة','',f"[{c['name']}]({c['web']}) · [{c['rating']}/5 Google]({c['ratingSource']}) · {price} {c['currency']} للكرفان والثلاثة.",'',c['view']+'. '+c['services'], '',c['season'], '',f"[مصدر الموسم والخدمات]({c['seasonSource']})",'',c['tradeoff']]
+  rate=('%.1f/5 Google'%c['rating']) if c.get('rating') is not None else 'التقييم على خرائط Google'
+  lines += ['','### مخيم الليلة','',f"[{c['name']}]({c['web']}) · [{rate}]({c['ratingSource']}) · {price} {c['currency']} للكرفان والثلاثة.",'',c['view']+'. '+c['services'], '',c['season'], '',f"[مصدر الموسم والخدمات]({c['seasonSource']})",'',c['tradeoff']]
+ if d.get('grocery'):
+  g=d['grocery'];lines+=['','### تسوّق قبل الحدود','',f"[{g['name']}]({g['map']}) — {g['town']}. {g['note']}"]
+ if d.get('food'):
+  lines+=['','### توقف طعام مميز','']+[f"- [{f['name']}]({f['map']}) · {f['type']}"+(f" · ★{f['rating']}" if f.get('rating') is not None else '') for f in d['food']]
  lines+=['','### ملاحظات','']+['- '+n for n in d['notes']]+['']
 lines+=['## ميزانية ومصادر','',
 'إيجار الكرفان والتأمين والوديعة والطيران خارج التقديرات. ثمن الوقود يحسب عند التعبئة؛ افتراض الاستهلاك 11–14 لتر/100 كم. الطعام 600–900 كرونة يوميًا للمجموعة بعملة البلد مع الطبخ، وزيادة للمطاعم. لا تجمع NOK مع SEK دون سعر صرف.','',
